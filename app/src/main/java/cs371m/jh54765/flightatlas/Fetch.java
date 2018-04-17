@@ -2,6 +2,7 @@ package cs371m.jh54765.flightatlas;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -97,7 +98,7 @@ public class Fetch {
             return null;
         }
         private Void loadXmlFromNetwork() {
-            System.out.println("LOAD XML");
+            Log.d("Fetch","LOAD XML");
             TreeMap<String,Metro> cities = new TreeMap<String,Metro>();
             TreeMap<String,Airport> airports = new TreeMap<String,Airport>();
             TreeMap<String,Route> routes = new TreeMap<String,Route>();
@@ -109,18 +110,18 @@ public class Fetch {
             int lineLen;
             Scanner cityList;
             try {
-                System.out.println("Test 1");
+                Log.v("Fetch","Test 1");
                 routesURL = new URL(context.getString(R.string.routes_url));
                 airportsURL = new URL(context.getString(R.string.airports_url));
                 airlinesURL = new URL(context.getString(R.string.airlines_url));
 
-                System.out.println("Test 2");
+                Log.v("Fetch","Test 2");
                 Scanner airportsScanner = new Scanner(airportsURL.openStream());
-                System.out.println("Test 3");
+                Log.v("Fetch","Test 3");
                 Scanner airlinesScanner = new Scanner(airlinesURL.openStream());
-                System.out.println("Test 4");
+                Log.v("Fetch","Test 4");
                 Scanner routesScanner = new Scanner(routesURL.openStream());
-                System.out.println("Test 5");
+                Log.v("Fetch","Test 5");
 
                 String current,airportID,name,city,
                         country,codeIATA,codeICAO,DST,Tz,
@@ -160,7 +161,7 @@ public class Fetch {
 
                 }
                 airportsScanner.close();
-                System.out.println("Test 6");
+                Log.v("Fetch","Test 6");
 
                 String airlineID,airlineName,airlineAlias,IATAcode,ICAOcode,callsign,active;
                 while(airlinesScanner.hasNextLine()) {
@@ -214,7 +215,7 @@ public class Fetch {
 
 
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                Log.e("Fetch",e.getMessage());
 
             }
             return null;

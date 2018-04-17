@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -41,7 +43,7 @@ public class MapHolder implements OnMapReadyCallback {
     /* Some from RedFetch some from this example:
     http://theoryapp.com/parse-json-in-java/
      */
-    private float defaultZoom = 8.0f;
+    private float defaultZoom = 4.0f;
     private static class NameToLatLngTask extends AsyncTask<String, Object, LatLng> {
         public interface OnLatLngCallback {
             public void onLatLng(LatLng a);
@@ -226,7 +228,7 @@ public class MapHolder implements OnMapReadyCallback {
     public void showAirport(Airport airport) {
         if (warnIfNotReady())
             return;
-
+        gMap.clear();
         LatLng pos = new LatLng(airport.getLatitude(),airport.getLongitude());
         gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos,defaultZoom));
         gMap.addMarker(new MarkerOptions().position(pos));
@@ -238,14 +240,36 @@ public class MapHolder implements OnMapReadyCallback {
             Airport dest = route.getDestination();
             LatLng pos2 = new LatLng(dest.getLatitude(),dest.getLongitude());
             DrawLine(pos,pos2);
+//            DrawDestDot(pos2);
+            gMap.addMarker(new MarkerOptions().position(pos2));
         }
+        DrawSrcDot(pos);
 
     }
 
     public void DrawLine(LatLng start, LatLng end) {
         Polyline line = gMap.addPolyline(new PolylineOptions()
         .add(start, end)
-        .width(5)
-        .color(Color.RED));
+        .width(3)
+        .color(Color.rgb(128,0,0)));
+    }
+
+    public void DrawDestDot(LatLng pos) {
+        Circle circle = gMap.addCircle(new CircleOptions()
+        .center(pos)
+        .radius(2)
+        .fillColor(Color.BLUE)
+        .strokeColor(Color.BLACK)
+        .strokeWidth(1));
+
+    }
+    public void DrawSrcDot(LatLng pos) {
+        Circle circle = gMap.addCircle(new CircleOptions()
+                .center(pos)
+                .radius(4)
+                .fillColor(Color.RED)
+                .strokeColor(Color.BLACK)
+                .strokeWidth(1));
+
     }
 }

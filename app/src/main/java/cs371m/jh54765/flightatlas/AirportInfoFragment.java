@@ -70,9 +70,9 @@ public class AirportInfoFragment extends Fragment {
         this.text_coords.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = mainActivity.getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.hide(fragment).commit();
+//                FragmentManager fragmentManager = mainActivity.getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.hide(fragment).commit();
                 mainActivity.toMapFragment(airport);
             }
         });

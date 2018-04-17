@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
 
 
     public void fetchStart() {
-        System.out.println("Fetch started");
+        Log.v("MainActivity","Fetch started");
     }
 
     public void fetchComplete(TreeMap<String,Metro> cities,
@@ -59,18 +59,18 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
 
 
 
-        System.out.println("Fetch complete");
+        Log.d("MainActivity","Fetch complete");
         this.cities = cities;
         this.airports = airports;
         this.routes = routes;
         this.airlines = airlines;
         this.routeCodes = routeCodes;
-        System.out.printf("There are %d cities and %d airports\n",this.cities.size(),this.airports.size());
+        Log.d("MainActivity",String.format("There are %d cities and %d airports\n",this.cities.size(),this.airports.size()));
 
         launchListFragment();
     }
     public void fetchFailed() {
-        System.out.println("Fetch Failed");
+        Log.d("MainActivity","Fetch Failed");
     }
 
     public void updateDatabase() {
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
         launchLoadingFragment();
 
 
-        System.out.println("Fetching");
+        Log.d("MainActivity","Fetching");
         new Fetch(MainActivity.this,getApplicationContext());
 //        launchListActivity();
 
@@ -176,9 +176,22 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 //        fragmentTransaction.add(R.id.main_fragment,mapFragment);
+        fragmentTransaction.remove(fragmentManager.findFragmentById(R.id.main_fragment));
         fragmentTransaction.show(mapFragment);
         fragmentTransaction.addToBackStack("mapFragment");
         fragmentTransaction.commit();
         mapHolder.showAirport(airport);
+    }
+
+    @Override
+    public void onBackPressed() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if (fragmentManager.getBackStackEntryCount() > 0) {
+            Log.i("MainActivity","popping backstack");
+            fragmentManager.popBackStack();
+        } else {
+            Log.i("MainActivity","nothing on backstack, calling super");
+            super.onBackPressed();
+        }
     }
 }

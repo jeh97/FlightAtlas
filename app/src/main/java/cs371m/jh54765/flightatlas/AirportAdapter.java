@@ -142,12 +142,13 @@ public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.AirportV
         FragmentManager fragmentManager = mainActivity.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentManager.popBackStack();
+//        fragmentManager.popBackStack();
         Bundle args = new Bundle();
         args.putString("airport",codeIATA);
 
         AirportInfoFragment infoFragment = new AirportInfoFragment();
         infoFragment.setArguments(args);
+        fragmentTransaction.remove(fragmentManager.findFragmentById(R.id.main_fragment));
         fragmentTransaction.add(R.id.main_fragment,infoFragment);
         fragmentTransaction.addToBackStack("airport_info");
         fragmentTransaction.commit();
