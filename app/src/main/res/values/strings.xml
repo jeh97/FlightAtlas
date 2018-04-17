@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">FlightAtlas</string>
+    <string name="xml_error">Error parsing XML.</string>
+    <string name="connection_error">Unable to load content. Check your network connection.</string>
+    <string name="routes_url">https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat</string>
+    <string name="airports_url">https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat</string>
+    <string name="airlines_url">https://raw.githubusercontent.com/jpatokal/openflights/master/data/airlines.dat</string>
+    <string-array name="airports_spinner">
+        <item>Name</item>
+        <item>IATA Code</item>
+        <item>City</item>
+        <item>Country</item>
+    </string-array>
+    <string name="title_activity_maps">Map</string>
+</resources>

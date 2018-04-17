@@ -1,0 +1,2386 @@
+<Metrocodes>
+<city>
+	<name>Atlanta</name>
+	<airport>ATL</airport>
+	<xFact>0.731</xFact>
+	<yFact>0.6327</yFact>
+</city>
+<city>
+	<name>Dallas</name>
+	<airport>DFW</airport>
+	<airport>DAL</airport>
+	<xFact>0.504</xFact>
+	<yFact>0.7055</yFact>
+</city>
+<city>
+	<name>New York</name>
+	<airport>JFK</airport>
+	<airport>LGA</airport>
+	<airport>EWR</airport>
+	<airport>HPN</airport>
+	<xFact>0.882</xFact>
+	<yFact>0.3350</yFact>
+</city>
+<city>
+	<name>Charlotte</name>
+	<airport>CLT</airport>
+	<xFact>0.794</xFact>
+	<yFact>0.5728</yFact>
+</city>
+<city>
+	<name>Houston</name>
+	<airport>HOU</airport>
+	<airport>IAH</airport>
+	<xFact>0.525</xFact>
+	<yFact>0.8058</yFact>
+</city>
+<city>
+	<name>New Orleans</name>
+	<airport>MSY</airport>
+	<xFact>0.624</xFact>
+	<yFact>0.7977</yFact>
+</city>
+<city>
+	<name>Baton Rouge</name>
+	<airport>BTR</airport>
+	<xFact>0.603</xFact>
+	<yFact>0.7783</yFact>
+</city>
+<city>
+	<name>Jackson</name>
+	<airport>JAN</airport>
+	<xFact>0.625</xFact>
+	<yFact>0.7104</yFact>
+</city>
+<city>
+	<name>Austin</name>
+	<airport>AUS</airport>
+	<xFact>0.478</xFact>
+	<yFact>0.7977</yFact>
+</city>
+<city>
+	<name>Memphis</name>
+	<airport>MEM</airport>
+	<xFact>0.618</xFact>
+	<yFact>0.6084</yFact>
+</city>
+<city>
+	<name>Los Angeles</name>
+	<airport>LAX</airport>
+	<airport>ONT</airport>
+	<airport>SNA</airport>
+	<airport>BUR</airport>
+	<xFact>0.094</xFact>
+	<yFact>0.5825</yFact>
+</city>
+<city>
+	<name>Chicago</name>
+	<airport>ORD</airport>
+	<airport>MDW</airport>
+	<airport>RFD</airport>
+	<xFact>0.642</xFact>
+	<yFact>0.3511</yFact>
+</city>
+<city>
+	<name>Detroit</name>
+	<airport>DTW</airport>
+	<airport>DET</airport>
+	<airport>YIP</airport>
+	<xFact>0.719</xFact>
+	<yFact>0.3301</yFact>
+</city>
+<city>
+	<name>Miami</name>
+	<airport>MIA</airport>
+	<airport>FLL</airport>
+	<airport>PBI</airport>
+	<xFact>0.835</xFact>
+	<yFact>0.8981</yFact>
+</city>
+<city>
+	<name>San Francisco</name>
+	<airport>SFO</airport>
+	<airport>OAK</airport>
+	<xFact>0.041</xFact>
+	<yFact>0.4223</yFact>
+</city>
+<city>
+	<name>Washington DC</name>
+	<airport>IAD</airport>
+	<airport>DCA</airport>
+	<xFact>0.844</xFact>
+	<yFact>0.4191</yFact>
+</city>
+<city>
+	<name>Baltimore</name>
+	<airport>BWI</airport>
+	<xFact>0.847</xFact>
+	<yFact>0.4045</yFact>
+</city>
+<city>
+	<name>Denver</name>
+	<airport>DEN</airport>
+	<xFact>0.351</xFact>
+	<yFact>0.4417</yFact>
+</city>
+<city>
+	<name>Las Vegas</name>
+	<airport>LAS</airport>
+	<xFact>0.159</xFact>
+	<yFact>0.5243</yFact>
+</city>
+<city>
+	<name>Phoenix</name>
+	<airport>PHX</airport>
+	<airport>AZA</airport>
+	<xFact>0.210</xFact>
+	<yFact>0.6278</yFact>
+</city>
+<city>
+	<name>Orlando</name>
+	<airport>MCO</airport>
+	<airport>SFB</airport>
+	<xFact>0.803</xFact>
+	<yFact>0.8139</yFact>
+</city>
+<city>
+	<name>Alexandria, LA</name>
+	<airport>AEX</airport>
+	<xFact>0.575</xFact>
+	<yFact>0.7476</yFact>
+</city>
+<city>
+	<name>Lafayette, LA</name>
+	<airport>LFT</airport>
+	<xFact>0.590</xFact>
+	<yFact>0.7864</yFact>
+</city>
+<city>
+	<name>Lake Charles, LA</name>
+	<airport>LCH</airport>
+	<xFact>0.563</xFact>
+	<yFact>0.7929</yFact>
+</city>
+<city>
+	<name>Monroe, LA</name>
+	<airport>MLU</airport>
+	<xFact>0.585</xFact>
+	<yFact>0.7104</yFact>
+</city>
+<city>
+	<name>Shreveport, LA</name>
+	<airport>SHV</airport>
+	<xFact>0.554</xFact>
+	<yFact>0.7039</yFact>
+</city>
+<city>
+	<name>Abilene, TX</name>
+	<airport>ABI</airport>
+	<xFact>0.435</xFact>
+	<yFact>0.7120</yFact>
+</city>
+<city>
+	<name>Amarillo, TX</name>
+	<airport>AMA</airport>
+	<xFact>0.400</xFact>
+	<yFact>0.6100</yFact>
+</city>
+<city>
+	<name>Beaumont, TX</name>
+	<airport>BPT</airport>
+	<xFact>0.540</xFact>
+	<yFact>0.7994</yFact>
+</city>
+<city>
+	<name>Brownsville, TX</name>
+	<airport>BRO</airport>
+	<xFact>0.472</xFact>
+	<yFact>0.9450</yFact>
+</city>
+<city>
+	<name>College Station, TX</name>
+	<airport>CLL</airport>
+	<xFact>0.500</xFact>
+	<yFact>0.7783</yFact>
+</city>
+<city>
+	<name>Corpus Christi, TX</name>
+	<airport>CRP</airport>
+	<xFact>0.480</xFact>
+	<yFact>0.8754</yFact>
+</city>
+<city>
+	<name>Del Rio, TX</name>
+	<airport>DRT</airport>
+	<xFact>0.409</xFact>
+	<yFact>0.8155</yFact>
+</city>
+<city>
+	<name>El Paso, TX</name>
+	<airport>ELP</airport>
+	<xFact>0.307</xFact>
+	<yFact>0.7136</yFact>
+</city>
+<city>
+	<name>Killeen, TX</name>
+	<airport>GRK</airport>
+	<xFact>0.478</xFact>
+	<yFact>0.7573</yFact>
+</city>
+<city>
+	<name>Harlingen, TX</name>
+	<airport>HRL</airport>
+	<xFact>0.471</xFact>
+	<yFact>0.9353</yFact>
+</city>
+<city>
+	<name>Laredo, TX</name>
+	<airport>LRD</airport>
+	<xFact>0.436</xFact>
+	<yFact>0.8883</yFact>
+</city>
+<city>
+	<name>Longview, TX</name>
+	<airport>GGG</airport>
+	<xFact>0.528</xFact>
+	<yFact>0.7104</yFact>
+</city>
+<city>
+	<name>Lubbock, TX</name>
+	<airport>LBB</airport>
+	<xFact>0.400</xFact>
+	<yFact>0.6683</yFact>
+</city>
+<city>
+	<name>McAllen, TX</name>
+	<airport>MFE</airport>
+	<xFact>0.460</xFact>
+	<yFact>0.9369</yFact>
+</city>
+<city>
+	<name>Midland, TX</name>
+	<airport>MAF</airport>
+	<xFact>0.396</xFact>
+	<yFact>0.7249</yFact>
+</city>
+<city>
+	<name>San Angelo, TX</name>
+	<airport>SJT</airport>
+	<xFact>0.421</xFact>
+	<yFact>0.7476</yFact>
+</city>
+<city>
+	<name>San Antonio, TX</name>
+	<airport>SAT</airport>
+	<xFact>0.462</xFact>
+	<yFact>0.8091</yFact>
+</city>
+<city>
+	<name>Tyler, TX</name>
+	<airport>TYR</airport>
+	<xFact>0.519</xFact>
+	<yFact>0.7249</yFact>
+</city>
+<city>
+	<name>Waco, TX</name>
+	<airport>ACT</airport>
+	<xFact>0.487</xFact>
+	<yFact>0.7217</yFact>
+</city>
+<city>
+	<name>Wichita Falls, TX</name>
+	<airport>SPS</airport>
+	<xFact>0.457</xFact>
+	<yFact>0.6634</yFact>
+</city>
+<city>
+	<name>Victoria, TX</name>
+	<airport>VCT</airport>
+	<xFact>0.501</xFact>
+	<yFact>0.8269</yFact>
+</city>
+<city>
+	<name>Columbus, MS</name>
+	<airport>GTR</airport>
+	<xFact>0.643</xFact>
+	<yFact>0.6618</yFact>
+</city>
+<city>
+	<name>Biloxi, MS</name>
+	<airport>GPT</airport>
+	<xFact>0.650</xFact>
+	<yFact>0.7735</yFact>
+</city>
+<city>
+	<name>Hattiesburg, MS</name>
+	<airport>PIB</airport>
+	<xFact>0.641</xFact>
+	<yFact>0.7443</yFact>
+</city>
+<city>
+	<name>Greenville, MS</name>
+	<airport>GLH</airport>
+	<xFact>0.603</xFact>
+	<yFact>0.6634</yFact>
+</city>
+<city>
+	<name>Meridian, MS</name>
+	<airport>MEI</airport>
+	<xFact>0.649</xFact>
+	<yFact>0.7006</yFact>
+</city>
+<city>
+	<name>Tupelo, MS</name>
+	<airport>TUP</airport>
+	<xFact>0.644</xFact>
+	<yFact>0.6392</yFact>
+</city>
+<city>
+	<name>Birmingham, AL</name>
+	<airport>BHM</airport>
+	<xFact>0.680</xFact>
+	<yFact>0.6586</yFact>
+</city>
+<city>
+	<name>Muscle Shoals, AL</name>
+	<airport>MSL</airport>
+	<xFact>0.667</xFact>
+	<yFact>0.6165</yFact>
+</city>
+<city>
+	<name>Montgomery, AL</name>
+	<airport>MGM</airport>
+	<xFact>0.693</xFact>
+	<yFact>0.6990</yFact>
+</city>
+<city>
+	<name>Mobile, AL</name>
+	<airport>MOB</airport>
+	<xFact>0.663</xFact>
+	<yFact>0.7686</yFact>
+</city>
+<city>
+	<name>Huntsville, AL</name>
+	<airport>HSV</airport>
+	<xFact>0.686</xFact>
+	<yFact>0.6230</yFact>
+</city>
+<city>
+	<name>Dothan, AL</name>
+	<airport>DHN</airport>
+	<xFact>0.710</xFact>
+	<yFact>0.7298</yFact>
+</city>
+<city>
+	<name>Albany, GA</name>
+	<airport>ABY</airport>
+	<xFact>0.740</xFact>
+	<yFact>0.7168</yFact>
+</city>
+<city>
+	<name>Augusta, GA</name>
+	<airport>AGS</airport>
+	<xFact>0.770</xFact>
+	<yFact>0.6440</yFact>
+</city>
+<city>
+	<name>Brunswick, GA</name>
+	<airport>BQK</airport>
+	<xFact>0.791</xFact>
+	<yFact>0.7233</yFact>
+</city>
+<city>
+	<name>Columbus, GA</name>
+	<airport>CSG</airport>
+	<xFact>0.720</xFact>
+	<yFact>0.6861</yFact>
+</city>
+<city>
+	<name>Savannah, GA</name>
+	<airport>SAV</airport>
+	<xFact>0.794</xFact>
+	<yFact>0.6942</yFact>
+</city>
+<city>
+	<name>Valdosta, GA</name>
+	<airport>VLD</airport>
+	<xFact>0.760</xFact>
+	<yFact>0.7411</yFact>
+</city>
+<city>
+	<name>Fayetteville, AR</name>
+	<airport>XNA</airport>
+	<xFact>0.542</xFact>
+	<yFact>0.5809</yFact>
+</city>
+<city>
+	<name>Fort Smith, AR</name>
+	<airport>FSM</airport>
+	<xFact>0.536</xFact>
+	<yFact>0.6052</yFact>
+</city>
+<city>
+	<name>Little Rock, AR</name>
+	<airport>LIT</airport>
+	<xFact>0.576</xFact>
+	<yFact>0.6262</yFact>
+</city>
+<city>
+	<name>Texarkana, AR</name>
+	<airport>TXK</airport>
+	<xFact>0.543</xFact>
+	<yFact>0.6731</yFact>
+</city>
+<city>
+	<name>El Dorado, AR</name>
+	<airport>ELD</airport>
+	<xFact>0.570</xFact>
+	<yFact>0.6699</yFact>
+</city>
+<city>
+	<name>Harrison, AR</name>
+	<airport>HRO</airport>
+	<xFact>0.557</xFact>
+	<yFact>0.5777</yFact>
+</city>
+<city>
+	<name>Hot Springs, AR</name>
+	<airport>HOT</airport>
+	<xFact>0.564</xFact>
+	<yFact>0.6311</yFact>
+</city>
+<city>
+	<name>Jonesboro, AR</name>
+	<airport>JBR</airport>
+	<xFact>0.601</xFact>
+	<yFact>0.5858</yFact>
+</city>
+<city>
+	<name>Columbia, MO</name>
+	<airport>COU</airport>
+	<xFact>0.570</xFact>
+	<yFact>0.4773</yFact>
+</city>
+<city>
+	<name>Joplin, MO</name>
+	<airport>JLN</airport>
+	<xFact>0.535</xFact>
+	<yFact>0.5372</yFact>
+</city>
+<city>
+	<name>Kansas City, MO</name>
+	<airport>MCI</airport>
+	<xFact>0.529</xFact>
+	<yFact>0.4674</yFact>
+</city>
+<city>
+	<name>Springfield, MO</name>
+	<airport>SGF</airport>
+	<xFact>0.552</xFact>
+	<yFact>0.5307</yFact>
+</city>
+<city>
+	<name>St. Louis, MO</name>
+	<airport>STL</airport>
+	<xFact>0.604</xFact>
+	<yFact>0.4871</yFact>
+</city>
+<city>
+	<name>Cape Girardeau, MO</name>
+	<airport>CGI</airport>
+	<xFact>0.618</xFact>
+	<yFact>0.5307</yFact>
+</city>
+<city>
+	<name>Fort Leonard Wood, MO</name>
+	<airport>TBN</airport>
+	<xFact>0.572</xFact>
+	<yFact>0.5129</yFact>
+</city>
+<city>
+	<name>Kirksville, MO</name>
+	<airport>IRK</airport>
+	<xFact>0.562</xFact>
+	<yFact>0.4320</yFact>
+</city>
+<city>
+	<name>Daytona Beach, FL</name>
+	<airport>DAB</airport>
+	<xFact>0.805</xFact>
+	<yFact>0.7945</yFact>
+</city>
+<city>
+	<name>Fort Myers, FL</name>
+	<airport>RSW</airport>
+	<xFact>0.806</xFact>
+	<yFact>0.9126</yFact>
+</city>
+<city>
+	<name>Gainesville, FL</name>
+	<airport>GNV</airport>
+	<xFact>0.779</xFact>
+	<yFact>0.7816</yFact>
+</city>
+<city>
+	<name>Jacksonville, FL</name>
+	<airport>JAX</airport>
+	<xFact>0.792</xFact>
+	<yFact>0.7573</yFact>
+</city>
+<city>
+	<name>Key West, FL</name>
+	<airport>EYW</airport>
+	<xFact>0.809</xFact>
+	<yFact>0.9628</yFact>
+</city>
+<city>
+	<name>Melbourne, FL</name>
+	<airport>MLB</airport>
+	<xFact>0.818</xFact>
+	<yFact>0.8317</yFact>
+</city>
+<city>
+	<name>Panama City Beach, FL</name>
+	<airport>ECP</airport>
+	<xFact>0.707</xFact>
+	<yFact>0.7718</yFact>
+</city>
+<city>
+	<name>Pensacola, FL</name>
+	<airport>PNS</airport>
+	<xFact>0.683</xFact>
+	<yFact>0.7686</yFact>
+</city>
+<city>
+	<name>Punta Gorda, FL</name>
+	<airport>PGD</airport>
+	<xFact>0.800</xFact>
+	<yFact>0.8981</yFact>
+</city>
+<city>
+	<name>Sarasota, FL</name>
+	<airport>SRQ</airport>
+	<xFact>0.782</xFact>
+	<yFact>0.8673</yFact>
+</city>
+<city>
+	<name>St. Augustine, FL</name>
+	<airport>SGJ</airport>
+	<xFact>0.798</xFact>
+	<yFact>0.7718</yFact>
+</city>
+<city>
+	<name>St. Petersburg, FL</name>
+	<airport>PIE</airport>
+	<xFact>0.778</xFact>
+	<yFact>0.8544</yFact>
+</city>
+<city>
+	<name>Tallahassee, FL</name>
+	<airport>TLH</airport>
+	<xFact>0.739</xFact>
+	<yFact>0.7621</yFact>
+</city>
+<city>
+	<name>Tampa, FL</name>
+	<airport>TPA</airport>
+	<xFact>0.781</xFact>
+	<yFact>0.8430</yFact>
+</city>
+<city>
+	<name>Valparaiso, FL</name>
+	<airport>VPS</airport>
+	<xFact>0.697</xFact>
+	<yFact>0.7654</yFact>
+</city>
+<city>
+	<name>Lawton, OK</name>
+	<airport>LAW</airport>
+	<xFact>0.463</xFact>
+	<yFact>0.6343</yFact>
+</city>
+<city>
+	<name>Oklahoma City</name>
+	<airport>OKC</airport>
+	<xFact>0.479</xFact>
+	<yFact>0.6019</yFact>
+</city>
+<city>
+	<name>Tulsa</name>
+	<airport>TUL</airport>
+	<xFact>0.498</xFact>
+	<yFact>0.5777</yFact>
+</city>
+<city>
+	<name>Flagstaff, AZ</name>
+	<airport>FLG</airport>
+	<xFact>0.220</xFact>
+	<yFact>0.5728</yFact>
+</city>
+<city>
+	<name>Grand Canyon</name>
+	<airport>GCN</airport>
+	<xFact>0.218</xFact>
+	<yFact>0.5502</yFact>
+</city>
+
+<city>
+	<name>Page, AZ</name>
+	<airport>PGA</airport>
+	<xFact>0.235</xFact>
+	<yFact>0.5178</yFact>
+</city>
+<city>
+	<name>Tucson, AZ</name>
+	<airport>TUS</airport>
+	<xFact>0.220</xFact>
+	<yFact>0.6845</yFact>
+</city>
+<city>
+	<name>Yuma, AZ</name>
+	<airport>YUM</airport>
+	<xFact>0.155</xFact>
+	<yFact>0.6505</yFact>
+</city>
+<city>
+	<name>Prescott, AZ</name>
+	<airport>PRC</airport>
+	<xFact>0.215</xFact>
+	<yFact>0.6003</yFact>
+</city>
+<city>
+	<name>Show Low, AZ</name>
+	<airport>SOW</airport>
+	<xFact>0.249</xFact>
+	<yFact>0.6230</yFact>
+</city>
+<city>
+	<name>Tri-Cities, TN</name>
+	<airport>TRI</airport>
+	<xFact>0.755</xFact>
+	<yFact>0.5356</yFact>
+</city>
+<city>
+	<name>Chattanooga, TN</name>
+	<airport>CHA</airport>
+	<xFact>0.706</xFact>
+	<yFact>0.5922</yFact>
+</city>
+<city>
+	<name>Knoxville, TN</name>
+	<airport>TYS</airport>
+	<xFact>0.718</xFact>
+	<yFact>0.5583</yFact>
+</city>
+<city>
+	<name>Nashville, TN</name>
+	<airport>BNA</airport>
+	<xFact>0.675</xFact>
+	<yFact>0.5663</yFact>
+</city>
+	<city>
+		<name>Seattle</name>
+		<airport>SEA</airport>
+		<airport>BFI</airport>
+		<xFact>0.109</xFact>
+		<yFact>0.0485</yFact>
+	</city>
+	<city>
+		<name>Minneapolis/St. Paul</name>
+		<airport>MSP</airport>
+		<xFact>0.545</xFact>
+		<yFact>0.2557</yFact>
+	</city>
+	<city>
+		<name>Boston</name>
+		<airport>BOS</airport>
+		<xFact>0.918</xFact>
+		<yFact>0.2589</yFact>
+	</city>
+	<city>
+		<name>Philadelphia</name>
+		<airport>PHL</airport>
+		<xFact>0.863</xFact>
+		<yFact>0.3706</yFact>
+	</city>
+	<city>
+		<name>Salt Lake City</name>
+		<airport>SLC</airport>
+		<xFact>0.236</xFact>
+		<yFact>0.3786</yFact>
+	</city>
+	<city>
+		<name>Honolulu</name>
+		<airport>HNL</airport>
+		<xFact>0.293</xFact>
+		<yFact>0.8916</yFact>
+	</city>
+	<city>
+		<name>San Diego</name>
+		<airport>SAN</airport>
+		<xFact>0.109</xFact>
+		<yFact>0.6262</yFact>
+	</city>
+	<city>
+		<name>Portland, OR</name>
+		<airport>PDX</airport>
+		<xFact>0.088</xFact>
+		<yFact>0.1408</yFact>
+	</city>
+	<city>
+		<name>Raleigh/Durham</name>
+		<airport>RDU</airport>
+		<xFact>0.834</xFact>
+		<yFact>0.5340</yFact>
+	</city>
+	<city>
+		<name>San Jose, CA</name>
+		<airport>SJC</airport>
+		<xFact>0.044</xFact>
+		<yFact>0.4353</yFact>
+	</city>
+	<city>
+		<name>Sacramento, CA</name>
+		<airport>SMF</airport>
+		<xFact>0.054</xFact>
+		<yFact>0.3867</yFact>
+	</city>
+	<city>
+		<name>Pittsburg</name>
+		<airport>PIT</airport>
+		<xFact>0.785</xFact>
+		<yFact>0.3835</yFact>
+	</city>
+	<city>
+		<name>Cleveland, OH</name>
+		<airport>CLE</airport>
+		<xFact>0.746</xFact>
+		<yFact>0.3544</yFact>
+	</city>
+	<city>
+		<name>Indianapolis</name>
+		<airport>IND</airport>
+		<xFact>0.674</xFact>
+		<yFact>0.4175</yFact>
+	</city>
+	<city>
+		<name>Milwaukee</name>
+		<airport>MKE</airport>
+		<xFact>0.637</xFact>
+		<yFact>0.3123</yFact>
+	</city>
+	<city>
+		<name>Columbus, OH</name>
+		<airport>CMH</airport>
+		<airport>LCK</airport>
+		<xFact>0.727</xFact>
+		<yFact>0.4094</yFact>
+	</city>
+	<city>
+		<name>Kahului</name>
+		<airport>OGG</airport>
+		<xFact>0.328</xFact>
+		<yFact>0.9110</yFact>
+	</city>
+	<city>
+		<name>Hartfort, CT</name>
+		<airport>BDL</airport>
+		<xFact>0.897</xFact>
+		<yFact>0.2929</yFact>
+	</city>
+	<city>
+		<name>Cincinatti</name>
+		<airport>CVG</airport>
+		<airport>LUK</airport>
+		<xFact>0.709</xFact>
+		<yFact>0.4482</yFact>
+	</city>
+	<city>
+		<name>Anchorage, AK</name>
+		<airport>ANC</airport>
+		<airport>LHD</airport>
+		<airport>MRI</airport>
+		<xFact>0.122</xFact>
+		<yFact>0.8948</yFact>
+	</city>
+	<city>
+		<name>Buffalo, NY</name>
+		<airport>BUF</airport>
+		<xFact>0.790</xFact>
+		<yFact>0.2816</yFact>
+	</city>
+	<city>
+		<name>Albuquerque, NM</name>
+		<airport>ABQ</airport>
+		<xFact>0.317</xFact>
+		<yFact>0.5858</yFact>
+	</city>
+	<city>
+		<name>Omaha, NE</name>
+		<airport>OMA</airport>
+		<xFact>0.502</xFact>
+		<yFact>0.3883</yFact>
+	</city>
+	<city>
+		<name>Garden City, KS</name>
+		<airport>GCK</airport>
+		<xFact>0.420</xFact>
+		<yFact>0.5016</yFact>
+	</city>
+	<city>
+		<name>Manhattan, KS</name>
+		<airport>MHK</airport>
+		<xFact>0.491</xFact>
+		<yFact>0.4725</yFact>
+	</city>
+	<city>
+		<name>Wichita, KS</name>
+		<airport>ICT</airport>
+		<xFact>0.486</xFact>
+		<yFact>0.5162</yFact>
+	</city>
+	<city>
+		<name>Dodge City, KS</name>
+		<airport>DDC</airport>
+		<xFact>0.434</xFact>
+		<yFact>0.5210</yFact>
+	</city>
+	<city>
+		<name>Hays, KS</name>
+		<airport>HYS</airport>
+		<xFact>0.449</xFact>
+		<yFact>0.4709</yFact>
+	</city>
+	<city>
+		<name>Liberal, KS</name>
+		<airport>LBL</airport>
+		<xFact>0.418</xFact>
+		<yFact>0.5324</yFact>
+	</city>
+	<city>
+		<name>Salina, KS</name>
+		<airport>SLN</airport>
+		<xFact>0.471</xFact>
+		<yFact>0.4806</yFact>
+	</city>
+	<city>
+		<name>Charleston, SC</name>
+		<airport>CHS</airport>
+		<xFact>0.816</xFact>
+		<yFact>0.6570</yFact>
+	</city>
+	<city>
+		<name>Columbia, SC</name>
+		<airport>CAE</airport>
+		<xFact>0.786</xFact>
+		<yFact>0.6165</yFact>
+	</city>
+	<city>
+		<name>Florence, SC</name>
+		<airport>FLO</airport>
+		<xFact>0.810</xFact>
+		<yFact>0.6084</yFact>
+	</city>
+	<city>
+		<name>Greenville, SC</name>
+		<airport>GSP</airport>
+		<xFact>0.765</xFact>
+		<yFact>0.5939</yFact>
+	</city>
+	<city>
+		<name>Hilton Head Island, SC</name>
+		<airport>HXD</airport>
+		<xFact>0.803</xFact>
+		<yFact>0.6764</yFact>
+	</city>
+	<city>
+		<name>Myrtle Beach, SC</name>
+		<airport>MYR</airport>
+		<xFact>0.828</xFact>
+		<yFact>0.6181</yFact>
+	</city>
+	<city>
+		<name>Asheville, NC</name>
+		<airport>AVL</airport>
+		<xFact>0.761</xFact>
+		<yFact>0.5647</yFact>
+	</city>
+	<city>
+		<name>Fayetteville, NC</name>
+		<airport>FAY</airport>
+		<xFact>0.828</xFact>
+		<yFact>0.5663</yFact>
+	</city>
+	<city>
+		<name>Greensboro, NC</name>
+		<airport>GSO</airport>
+		<xFact>0.800</xFact>
+		<yFact>0.5421</yFact>
+	</city>
+	<city>
+		<name>Greenville, NC</name>
+		<airport>PGV</airport>
+		<xFact>0.847</xFact>
+		<yFact>0.5340</yFact>
+	</city>
+	<city>
+		<name>Jacksonville, NC</name>
+		<airport>OAJ</airport>
+		<xFact>0.851</xFact>
+		<yFact>0.5712</yFact>
+	</city>
+	<city>
+		<name>New Bern, NC</name>
+		<airport>EWN</airport>
+		<xFact>0.862</xFact>
+		<yFact>0.5550</yFact>
+	</city>
+	<city>
+		<name>Raleigh, NC</name>
+		<airport>RDU</airport>
+		<xFact>0.815</xFact>
+		<yFact>0.5437</yFact>
+	</city>
+	<city>
+		<name>Wilmington, NC</name>
+		<airport>ILM</airport>
+		<xFact>0.845</xFact>
+		<yFact>0.5939</yFact>
+	</city>
+	<city>
+		<name>Billings, MT</name>
+		<airport>BIL</airport>
+		<xFact>0.315</xFact>
+		<yFact>0.1974</yFact>
+	</city>
+	<city>
+		<name>Bozeman, MT</name>
+		<airport>BZN</airport>
+		<xFact>0.266</xFact>
+		<yFact>0.1942</yFact>
+	</city>
+	<city>
+		<name>Butte, MT</name>
+		<airport>BTM</airport>
+		<xFact>0.245</xFact>
+		<yFact>0.1780</yFact>
+	</city>
+	<city>
+		<name>Great Falls, MT</name>
+		<airport>GTF</airport>
+		<xFact>0.263</xFact>
+		<yFact>0.1230</yFact>
+	</city>
+	<city>
+		<name>Helena, MT</name>
+		<airport>HLN</airport>
+		<xFact>0.254</xFact>
+		<yFact>0.1602</yFact>
+	</city>
+	<city>
+		<name>Kalispell, MT</name>
+		<airport>FCA</airport>
+		<xFact>0.228</xFact>
+		<yFact>0.0858</yFact>
+	</city>
+	<city>
+		<name>Missoula, MT</name>
+		<airport>MSO</airport>
+		<xFact>0.223</xFact>
+		<yFact>0.1294</yFact>
+	</city>
+	<city>
+		<name>Sidney, MT</name>
+		<airport>SDY</airport>
+		<xFact>0.373</xFact>
+		<yFact>0.1375</yFact>
+	</city>
+	<city>
+		<name>West Yellowstone, MT</name>
+		<airport>WYS</airport>
+		<xFact>0.259</xFact>
+		<yFact>0.2249</yFact>
+	</city>
+	<city>
+		<name>Wolf Point, MT</name>
+		<airport>OLF</airport>
+		<xFact>0.361</xFact>
+		<yFact>0.1165</yFact>
+	</city>
+	<city>
+		<name>Lexington, KY</name>
+		<airport>LEX</airport>
+		<xFact>0.708</xFact>
+		<yFact>0.4871</yFact>
+	</city>
+	<city>
+		<name>Louisville, KY</name>
+		<airport>SDF</airport>
+		<xFact>0.686</xFact>
+		<yFact>0.4854</yFact>
+	</city>
+	<city>
+		<name>Owensboro, KY</name>
+		<airport>OWB</airport>
+		<xFact>0.671</xFact>
+		<yFact>0.5049</yFact>
+	</city>
+	<city>
+		<name>Paducah, KY</name>
+		<airport>PAH</airport>
+		<xFact>0.636</xFact>
+		<yFact>0.5405</yFact>
+	</city>
+	<city>
+		<name>Aspen, CO</name>
+		<airport>ASE</airport>
+		<xFact>0.325</xFact>
+		<yFact>0.4498</yFact>
+	</city>
+	<city>
+		<name>Colorado Springs, CO</name>
+		<airport>COS</airport>
+		<xFact>0.364</xFact>
+		<yFact>0.4595</yFact>
+	</city>
+	<city>
+		<name>Durango, CO</name>
+		<airport>DRO</airport>
+		<xFact>0.296</xFact>
+		<yFact>0.5065</yFact>
+	</city>
+	<city>
+		<name>Eagle, CO</name>
+		<airport>EGE</airport>
+		<xFact>0.325</xFact>
+		<yFact>0.4304</yFact>
+	</city>
+	<city>
+		<name>Grand Junction, CO</name>
+		<airport>GJT</airport>
+		<xFact>0.291</xFact>
+		<yFact>0.4417</yFact>
+	</city>
+	<city>
+		<name>Gunnison, CO</name>
+		<airport>GUC</airport>
+		<xFact>0.318</xFact>
+		<yFact>0.4709</yFact>
+	</city>
+	<city>
+		<name>Hayden, CO</name>
+		<airport>HDN</airport>
+		<xFact>0.318</xFact>
+		<yFact>0.4013</yFact>
+	</city>
+	<city>
+		<name>Montrose, CO</name>
+		<airport>MTJ</airport>
+		<xFact>0.299</xFact>
+		<yFact>0.4595</yFact>
+	</city>
+	<city>
+		<name>Alamosa, CO</name>
+		<airport>ALS</airport>
+		<xFact>0.332</xFact>
+		<yFact>0.4984</yFact>
+	</city>
+	<city>
+		<name>Cortez, CO</name>
+		<airport>CEZ</airport>
+		<xFact>0.288</xFact>
+		<yFact>0.5016</yFact>
+	</city>
+	<city>
+		<name>Fort Collins, CO</name>
+		<airport>FNL</airport>
+		<xFact>0.350</xFact>
+		<yFact>0.4013</yFact>
+	</city>
+	<city>
+		<name>Pueblo, CO</name>
+		<airport>PUB</airport>
+		<xFact>0.367</xFact>
+		<yFact>0.4741</yFact>
+	</city>
+	<city>
+		<name>Telluride, CO</name>
+		<airport>TEX</airport>
+		<xFact>0.297</xFact>
+		<yFact>0.4773</yFact>
+	</city>
+	<city>
+		<name>Charlottesville, VA</name>
+		<airport>CHO</airport>
+		<xFact>0.819</xFact>
+		<yFact>0.4628</yFact>
+	</city>
+	<city>
+		<name>Lynchburg, VA</name>
+		<airport>LYH</airport>
+		<xFact>0.813</xFact>
+		<yFact>0.4887</yFact>
+	</city>
+	<city>
+		<name>Norfolk, VA</name>
+		<airport>ORF</airport>
+		<airport>PHF</airport>
+		<xFact>0.862</xFact>
+		<yFact>0.4871</yFact>
+	</city>
+	<city>
+		<name>Richmond, VA</name>
+		<airport>RIC</airport>
+		<xFact>0.838</xFact>
+		<yFact>0.4709</yFact>
+	</city>
+	<city>
+		<name>Roanoke, VA</name>
+		<airport>ROA</airport>
+		<xFact>0.799</xFact>
+		<yFact>0.4951</yFact>
+	</city>
+	<city>
+		<name>Shenendoah Valley, VA</name>
+		<airport>SHD</airport>
+		<xFact>0.813</xFact>
+		<yFact>0.4563</yFact>
+	</city>
+	<city>
+		<name>Charleston, WV</name>
+		<airport>CRW</airport>
+		<xFact>0.767</xFact>
+		<yFact>0.4628</yFact>
+	</city>
+	<city>
+		<name>Clarksburg, WV</name>
+		<airport>CKB</airport>
+		<xFact>0.784</xFact>
+		<yFact>0.4288</yFact>
+	</city>
+	<city>
+		<name>Huntington, WV</name>
+		<airport>HTS</airport>
+		<xFact>0.749</xFact>
+		<yFact>0.4693</yFact>
+	</city>
+	<city>
+		<name>Lewisburg, WV</name>
+		<airport>LWB</airport>
+		<xFact>0.784</xFact>
+		<yFact>0.4773</yFact>
+	</city>
+	<city>
+		<name>Morgantown, WV</name>
+		<airport>MGW</airport>
+		<xFact>0.787</xFact>
+		<yFact>0.4595</yFact>
+	</city>
+	<city>
+		<name>Beckley, WV</name>
+		<airport>BKW</airport>
+		<xFact>0.773</xFact>
+		<yFact>0.4838</yFact>
+	</city>
+	<city>
+		<name>Parkersburg, WV</name>
+		<airport>PKB</airport>
+		<xFact>0.763</xFact>
+		<yFact>0.4304</yFact>
+	</city>
+	<city>
+		<name>Salisbury, MD</name>
+		<airport>SBY</airport>
+		<xFact>0.866</xFact>
+		<yFact>0.4369</yFact>
+	</city>
+	<city>
+		<name>Hagerstown, MD</name>
+		<airport>HGR</airport>
+		<xFact>0.826</xFact>
+		<yFact>0.3981</yFact>
+	</city>
+	<city>
+		<name>Wilmington, DE</name>
+		<airport>ILG</airport>
+		<xFact>0.859</xFact>
+		<yFact>0.3851</yFact>
+	</city>
+	<city>
+		<name>Akron, OH</name>
+		<airport>CAK</airport>
+		<xFact>0.755</xFact>
+		<yFact>0.3770</yFact>
+	</city>
+	<city>
+		<name>Dayton, OH</name>
+		<airport>DAY</airport>
+		<xFact>0.710</xFact>
+		<yFact>0.4191</yFact>
+	</city>
+	<city>
+		<name>Toledo, OH</name>
+		<airport>TOL</airport>
+		<xFact>0.717</xFact>
+		<yFact>0.3528</yFact>
+	</city>
+	<city>
+		<name>Youngstown, OH</name>
+		<airport>YNG</airport>
+		<xFact>0.766</xFact>
+		<yFact>0.3625</yFact>
+	</city>
+	<city>
+		<name>Boise, ID</name>
+		<airport>BOI</airport>
+		<xFact>0.183</xFact>
+		<yFact>0.2395</yFact>
+	</city>
+	<city>
+		<name>Hailey, ID</name>
+		<airport>SUN</airport>
+		<xFact>0.207</xFact>
+		<yFact>0.2460</yFact>
+	</city>
+	<city>
+		<name>Idaho Falls, ID</name>
+		<airport>IDA</airport>
+		<xFact>0.245</xFact>
+		<yFact>0.2702</yFact>
+	</city>
+	<city>
+		<name>Lewiston, ID</name>
+		<airport>LWS</airport>
+		<xFact>0.180</xFact>
+		<yFact>0.1521</yFact>
+	</city>
+	<city>
+		<name>Pocatello, ID</name>
+		<airport>PIH</airport>
+		<xFact>0.238</xFact>
+		<yFact>0.2913</yFact>
+	</city>
+	<city>
+		<name>Twin Falls, ID</name>
+		<airport>TWF</airport>
+		<xFact>0.203</xFact>
+		<yFact>0.2880</yFact>
+	</city>
+	<city>
+		<name>Farmington, NM</name>
+		<airport>FMN</airport>
+		<xFact>0.286</xFact>
+		<yFact>0.5405</yFact>
+	</city>
+	<city>
+		<name>Hobbs, NM</name>
+		<airport>HOB</airport>
+		<xFact>0.365</xFact>
+		<yFact>0.6812</yFact>
+	</city>
+	<city>
+		<name>Roswell, NM</name>
+		<airport>ROW</airport>
+		<xFact>0.338</xFact>
+		<yFact>0.6521</yFact>
+	</city>
+	<city>
+		<name>Santa Fe, NM</name>
+		<airport>SAF</airport>
+		<xFact>0.327</xFact>
+		<yFact>0.5663</yFact>
+	</city>
+	<city>
+		<name>Carlsbad, NM</name>
+		<airport>CNM</airport>
+		<xFact>0.341</xFact>
+		<yFact>0.6909</yFact>
+	</city>
+	<city>
+		<name>Provo, UT</name>
+		<airport>PVU</airport>
+		<xFact>0.240</xFact>
+		<yFact>0.4013</yFact>
+	</city>
+	<city>
+		<name>St. George, UT</name>
+		<airport>SGU</airport>
+		<xFact>0.196</xFact>
+		<yFact>0.4951</yFact>
+	</city>
+	<city>
+		<name>Wendover, UT</name>
+		<airport>ENV</airport>
+		<xFact>0.204</xFact>
+		<yFact>0.4838</yFact>
+	</city>
+	<city>
+		<name>Cedar City, UT</name>
+		<airport>CDC</airport>
+		<xFact>0.213</xFact>
+		<yFact>0.4725</yFact>
+	</city>
+	<city>
+		<name>Moab, UT</name>
+		<airport>CNY</airport>
+		<xFact>0.264</xFact>
+		<yFact>0.4531</yFact>
+	</city>
+	<city>
+		<name>Vernal, UT</name>
+		<airport>VEL</airport>
+		<xFact>0.269</xFact>
+		<yFact>0.3900</yFact>
+	</city>
+	<city>
+		<name>Belleville, IL</name>
+		<airport>BLV</airport>
+		<xFact>0.614</xFact>
+		<yFact>0.4887</yFact>
+	</city>
+	<city>
+		<name>Bloomington, IL</name>
+		<airport>BMI</airport>
+		<xFact>0.621</xFact>
+		<yFact>0.4013</yFact>
+	</city>
+	<city>
+		<name>Urbana/Champaign, IL</name>
+		<airport>CMI</airport>
+		<xFact>0.635</xFact>
+		<yFact>0.4272</yFact>
+	</city>
+	<city>
+		<name>Marion, IL</name>
+		<airport>MWA</airport>
+		<xFact>0.633</xFact>
+		<yFact>0.5081</yFact>
+	</city>
+	<city>
+		<name>Moline, IL</name>
+		<airport>MLI</airport>
+		<xFact>0.597</xFact>
+		<yFact>0.3867</yFact>
+	</city>
+	<city>
+		<name>Peoria, IL</name>
+		<airport>PIA</airport>
+		<xFact>0.614</xFact>
+		<yFact>0.4110</yFact>
+	</city>
+	<city>
+		<name>Qunicy, IL</name>
+		<airport>UIN</airport>
+		<xFact>0.586</xFact>
+		<yFact>0.4369</yFact>
+	</city>
+	<city>
+		<name>Rockford, IL</name>
+		<airport>RFD</airport>
+		<xFact>0.621</xFact>
+		<yFact>0.3447</yFact>
+	</city>
+	<city>
+		<name>Springfield, IL</name>
+		<airport>SPI</airport>
+		<xFact>0.614</xFact>
+		<yFact>0.4369</yFact>
+	</city>
+	<city>
+		<name>Decatur, IL</name>
+		<airport>DEC</airport>
+		<xFact>0.628</xFact>
+		<yFact>0.4369</yFact>
+	</city>
+	<city>
+		<name>Evansville, IN</name>
+		<airport>EVV</airport>
+		<xFact>0.657</xFact>
+		<yFact>0.4968</yFact>
+	</city>
+	<city>
+		<name>Fort Wayne, IN</name>
+		<airport>FWA</airport>
+		<xFact>0.687</xFact>
+		<yFact>0.3754</yFact>
+	</city>
+	<city>
+		<name>South Bend, IN</name>
+		<airport>SBN</airport>
+		<xFact>0.671</xFact>
+		<yFact>0.3608</yFact>
+	</city>
+	<city>
+		<name>Alpena, MI</name>
+		<airport>APN</airport>
+		<xFact>0.704</xFact>
+		<yFact>0.2265</yFact>
+	</city>
+	<city>
+		<name>Charlevoix, MI</name>
+		<airport>CVX</airport>
+		<xFact>0.676</xFact>
+		<yFact>0.2233</yFact>
+	</city>
+	<city>
+		<name>Escanaba, MI</name>
+		<airport>ESC</airport>
+		<xFact>0.632</xFact>
+		<yFact>0.2120</yFact>
+	</city>
+	<city>
+		<name>Flint, MI</name>
+		<airport>FNT</airport>
+		<xFact>0.707</xFact>
+		<yFact>0.2994</yFact>
+	</city>
+	<city>
+		<name>Grand Rapids, MI</name>
+		<airport>GRR</airport>
+		<xFact>0.676</xFact>
+		<yFact>0.3139</yFact>
+	</city>
+	<city>
+		<name>Houghton County, MI</name>
+		<airport>CMX</airport>
+		<xFact>0.619</xFact>
+		<yFact>0.1650</yFact>
+	</city>
+	<city>
+		<name>Iron Mountain, MI</name>
+		<airport>IMT</airport>
+		<xFact>0.631</xFact>
+		<yFact>0.2104</yFact>
+	</city>
+	<city>
+		<name>Kalamazoo, MI</name>
+		<airport>AZO</airport>
+		<xFact>0.677</xFact>
+		<yFact>0.3382</yFact>
+	</city>
+	<city>
+		<name>Lansing, MI</name>
+		<airport>LAN</airport>
+		<xFact>0.693</xFact>
+		<yFact>0.3204</yFact>
+	</city>
+	<city>
+		<name>Marquette, MI</name>
+		<airport>MQT</airport>
+		<xFact>0.635</xFact>
+		<yFact>0.1828</yFact>
+	</city>
+	<city>
+		<name>Muskegon, MI</name>
+		<airport>MKG</airport>
+		<xFact>0.665</xFact>
+		<yFact>0.3010</yFact>
+	</city>
+	<city>
+		<name>Pellston, MI</name>
+		<airport>PLN</airport>
+		<xFact>0.684</xFact>
+		<yFact>0.2152</yFact>
+	</city>
+	<city>
+		<name>Saginaw, MI</name>
+		<airport>MBS</airport>
+		<xFact>0.703</xFact>
+		<yFact>0.2880</yFact>
+	</city>
+	<city>
+		<name>Sault Ste. Marie, MI</name>
+		<airport>CUI</airport>
+		<xFact>0.688</xFact>
+		<yFact>0.1780</yFact>
+	</city>
+	<city>
+		<name>Traverse City, MI</name>
+		<airport>TVC</airport>
+		<xFact>0.670</xFact>
+		<yFact>0.2460</yFact>
+	</city>
+	<city>
+		<name>Ironwood, MI</name>
+		<airport>IWD</airport>
+		<xFact>0.596</xFact>
+		<yFact>0.1909</yFact>
+	</city>
+	<city>
+		<name>Appleton, WI</name>
+		<airport>ATW</airport>
+		<xFact>0.626</xFact>
+		<yFact>0.2686</yFact>
+	</city>
+	<city>
+		<name>Eau Claire, WI</name>
+		<airport>EAU</airport>
+		<xFact>0.580</xFact>
+		<yFact>0.2524</yFact>
+	</city>
+	<city>
+		<name>Green Bay, WI</name>
+		<airport>GRB</airport>
+		<xFact>0.631</xFact>
+		<yFact>0.2589</yFact>
+	</city>
+	<city>
+		<name>La Crosse, WI</name>
+		<airport>LSE</airport>
+		<xFact>0.583</xFact>
+		<yFact>0.2880</yFact>
+	</city>
+	<city>
+		<name>Madison, WI</name>
+		<airport>MSN</airport>
+		<xFact>0.613</xFact>
+		<yFact>0.3107</yFact>
+	</city>
+	<city>
+		<name>Rhinelander, WI</name>
+		<airport>RHI</airport>
+		<xFact>0.615</xFact>
+		<yFact>0.2217</yFact>
+	</city>
+	<city>
+		<name>Wausau, WI</name>
+		<airport>CWA</airport>
+		<xFact>0.611</xFact>
+		<yFact>0.2476</yFact>
+	</city>
+	<city>
+		<name>Cedar Rapids, IA</name>
+		<airport>CID</airport>
+		<xFact>0.574</xFact>
+		<yFact>0.3608</yFact>
+	</city>
+	<city>
+		<name>Des Moines, IA</name>
+		<airport>DSM</airport>
+		<xFact>0.544</xFact>
+		<yFact>0.3706</yFact>
+	</city>
+	<city>
+		<name>Dubuque, IA</name>
+		<airport>DBQ</airport>
+		<xFact>0.591</xFact>
+		<yFact>0.3382</yFact>
+	</city>
+	<city>
+		<name>Sioux City, IA</name>
+		<airport>SUX</airport>
+		<xFact>0.599</xFact>
+		<yFact>0.3430</yFact>
+	</city>
+	<city>
+		<name>Waterloo, IA</name>
+		<airport>ALO</airport>
+		<xFact>0.559</xFact>
+		<yFact>0.3398</yFact>
+	</city>
+	<city>
+		<name>Allentown, PA</name>
+		<airport>ABE</airport>
+		<xFact>0.854</xFact>
+		<yFact>0.3479</yFact>
+	</city>
+	<city>
+		<name>Erie, PA</name>
+		<airport>ERI</airport>
+		<xFact>0.773</xFact>
+		<yFact>0.3220</yFact>
+	</city>
+	<city>
+		<name>Harrisburg, PA</name>
+		<airport>MDT</airport>
+		<xFact>0.844</xFact>
+		<yFact>0.3722</yFact>
+	</city>
+	<city>
+		<name>Latrobe, PA</name>
+		<airport>LBE</airport>
+		<xFact>0.793</xFact>
+		<yFact>0.3786</yFact>
+	</city>
+	<city>
+		<name>State College, PA</name>
+		<airport>SCE</airport>
+		<xFact>0.816</xFact>
+		<yFact>0.3544</yFact>
+	</city>
+	<city>
+		<name>Scranton, PA</name>
+		<airport>AVP</airport>
+		<xFact>0.845</xFact>
+		<yFact>0.3188</yFact>
+	</city>
+	<city>
+		<name>Williamsport, PA</name>
+		<airport>IPT</airport>
+		<xFact>0.829</xFact>
+		<yFact>0.3301</yFact>
+	</city>
+	<city>
+		<name>Albany, NY</name>
+		<airport>ALB</airport>
+		<xFact>0.868</xFact>
+		<yFact>0.2654</yFact>
+	</city>
+	<city>
+		<name>Binghamton, NY</name>
+		<airport>BGM</airport>
+		<xFact>0.840</xFact>
+		<yFact>0.2864</yFact>
+	</city>
+	<city>
+		<name>Buffalo, NY</name>
+		<airport>BUF</airport>
+		<xFact>0.794</xFact>
+		<yFact>0.2864</yFact>
+	</city>
+	<city>
+		<name>Elmira/Corning, NY</name>
+		<airport>ELM</airport>
+		<xFact>0.825</xFact>
+		<yFact>0.2961</yFact>
+	</city>
+	<city>
+		<name>Islip, NY</name>
+		<airport>ISP</airport>
+		<xFact>0.898</xFact>
+		<yFact>0.3285</yFact>
+	</city>
+	<city>
+		<name>Ithaca, NY</name>
+		<airport>ITH</airport>
+		<xFact>0.832</xFact>
+		<yFact>0.2864</yFact>
+	</city>
+	<city>
+		<name>Newburgh, NY</name>
+		<airport>SWF</airport>
+		<xFact>0.872</xFact>
+		<yFact>0.3058</yFact>
+	</city>
+	<city>
+		<name>Niagara Falls, NY</name>
+		<airport>IAG</airport>
+		<xFact>0.790</xFact>
+		<yFact>0.2783</yFact>
+	</city>
+	<city>
+		<name>Plattsburgh, NY</name>
+		<airport>PBG</airport>
+		<xFact>0.866</xFact>
+		<yFact>0.1926</yFact>
+	</city>
+	<city>
+		<name>Rochester, NY</name>
+		<airport>ROC</airport>
+		<xFact>0.805</xFact>
+		<yFact>0.2718</yFact>
+	</city>
+	<city>
+		<name>Syracuse, NY</name>
+		<airport>SYR</airport>
+		<xFact>0.835</xFact>
+		<yFact>0.2718</yFact>
+	</city>
+	<city>
+		<name>Watertown, NY</name>
+		<airport>ART</airport>
+		<xFact>0.831</xFact>
+		<yFact>0.2330</yFact>
+	</city>
+	<city>
+		<name>White Plains, NY</name>
+		<airport>HPN</airport>
+		<xFact>0.880</xFact>
+		<yFact>0.3188</yFact>
+	</city>
+	<city>
+		<name>Atlantic City, NJ</name>
+		<airport>ACY</airport>
+		<xFact>0.881</xFact>
+		<yFact>0.3883</yFact>
+	</city>
+	<city>
+		<name>Trenton, NJ</name>
+		<airport>TTN</airport>
+		<xFact>0.870</xFact>
+		<yFact>0.3576</yFact>
+	</city>
+	<city>
+		<name>Providence, RI</name>
+		<airport>PVD</airport>
+		<xFact>0.916</xFact>
+		<yFact>0.2880</yFact>
+	</city>
+	<city>
+		<name>Hartford, CT</name>
+		<airport>BDL</airport>
+		<xFact>0.896</xFact>
+		<yFact>0.2864</yFact>
+	</city>
+	<city>
+		<name>New Haven, CT</name>
+		<airport>HVN</airport>
+		<xFact>0.892</xFact>
+		<yFact>0.3091</yFact>
+	</city>
+	<city>
+		<name>Hyannis, MA</name>
+		<airport>HYA</airport>
+		<xFact>0.936</xFact>
+		<yFact>0.2767</yFact>
+	</city>
+	<city>
+		<name>Nantucket, MA</name>
+		<airport>ACK</airport>
+		<xFact>0.940</xFact>
+		<yFact>0.2896</yFact>
+	</city>
+	<city>
+		<name>Provincetown, MA</name>
+		<airport>PVC</airport>
+		<xFact>0.933</xFact>
+		<yFact>0.2605</yFact>
+	</city>
+	<city>
+		<name>Vineyard Haven, MA</name>
+		<airport>MVY</airport>
+		<xFact>0.932</xFact>
+		<yFact>0.2929</yFact>
+	</city>
+	<city>
+		<name>Worcester, MA</name>
+		<airport>ORH</airport>
+		<xFact>0.904</xFact>
+		<yFact>0.2654</yFact>
+	</city>
+	<city>
+		<name>Boulder City, NV</name>
+		<airport>BLD</airport>
+		<xFact>0.160</xFact>
+		<yFact>0.5437</yFact>
+	</city>
+	<city>
+		<name>Elko, NV</name>
+		<airport>EKO</airport>
+		<xFact>0.169</xFact>
+		<yFact>0.3430</yFact>
+	</city>
+	<city>
+		<name>Reno, NV</name>
+		<airport>RNO</airport>
+		<xFact>0.100</xFact>
+		<yFact>0.3722</yFact>
+	</city>
+	<city>
+		<name>Arcata, CA</name>
+		<airport>ACV</airport>
+		<xFact>0.033</xFact>
+		<yFact>0.2929</yFact>
+	</city>
+	<city>
+		<name>Bakersfield, CA</name>
+		<airport>BFL</airport>
+		<xFact>0.086</xFact>
+		<yFact>0.5243</yFact>
+	</city>
+	<city>
+		<name>Carlsbad, CA</name>
+		<airport>CLD</airport>
+		<xFact>0.108</xFact>
+		<yFact>0.6068</yFact>
+	</city>
+	<city>
+		<name>Chico, CA</name>
+		<airport>CIC</airport>
+		<xFact>0.067</xFact>
+		<yFact>0.3430</yFact>
+	</city>
+	<city>
+		<name>Crescent City, CA</name>
+		<airport>CEC</airport>
+		<xFact>0.041</xFact>
+		<yFact>0.2605</yFact>
+	</city>
+	<city>
+		<name>Fresno, CA</name>
+		<airport>FAT</airport>
+		<xFact>0.082</xFact>
+		<yFact>0.4660</yFact>
+	</city>
+	<city>
+		<name>Mammoth Lakes, CA</name>
+		<airport>MMH</airport>
+		<xFact>0.096</xFact>
+		<yFact>0.4401</yFact>
+	</city>
+	<city>
+		<name>Modesto, CA</name>
+		<airport>MOD</airport>
+		<xFact>0.072</xFact>
+		<yFact>0.4304</yFact>
+	</city>
+	<city>
+		<name>Monterey, CA</name>
+		<airport>MRY</airport>
+		<xFact>0.044</xFact>
+		<yFact>0.4676</yFact>
+	</city>
+	<city>
+		<name>Palm Springs, CA</name>
+		<airport>PSP</airport>
+		<xFact>0.126</xFact>
+		<yFact>0.5874</yFact>
+	</city>
+	<city>
+		<name>Redding, CA</name>
+		<airport>RDD</airport>
+		<xFact>0.067</xFact>
+		<yFact>0.3091</yFact>
+	</city>
+	<city>
+		<name>San Luis Obispo, CA</name>
+		<airport>SBP</airport>
+		<xFact>0.057</xFact>
+		<yFact>0.5162</yFact>
+	</city>
+	<city>
+		<name>Santa Barbara, CA</name>
+		<airport>SBA</airport>
+		<xFact>0.060</xFact>
+		<yFact>0.5518</yFact>
+	</city>
+	<city>
+		<name>Santa Maria, CA</name>
+		<airport>SMX</airport>
+		<xFact>0.060</xFact>
+		<yFact>0.5372</yFact>
+	</city>
+	<city>
+		<name>Santa Rosa, CA</name>
+		<airport>STS</airport>
+		<xFact>0.041</xFact>
+		<yFact>0.3981</yFact>
+	</city>
+	<city>
+		<name>Stockton, CA</name>
+		<airport>SCK</airport>
+		<xFact>0.068</xFact>
+		<yFact>0.4272</yFact>
+	</city>
+	<city>
+		<name>Eugene, OR</name>
+		<airport>EUG</airport>
+		<xFact>0.071</xFact>
+		<yFact>0.1926</yFact>
+	</city>
+	<city>
+		<name>Klamath Falls, OR</name>
+		<airport>LMT</airport>
+		<xFact>0.081</xFact>
+		<yFact>0.2492</yFact>
+	</city>
+	<city>
+		<name>Medford, OR</name>
+		<airport>MFR</airport>
+		<xFact>0.061</xFact>
+		<yFact>0.2427</yFact>
+	</city>
+	<city>
+		<name>North Bend, OR</name>
+		<airport>OTH</airport>
+		<xFact>0.047</xFact>
+		<yFact>0.2023</yFact>
+	</city>
+	<city>
+		<name>Redmond, OR</name>
+		<airport>RDM</airport>
+		<xFact>0.105</xFact>
+		<yFact>0.2023</yFact>
+	</city>
+	<city>
+		<name>Burlington, VT</name>
+		<airport>BTV</airport>
+		<xFact>0.874</xFact>
+		<yFact>0.1990</yFact>
+	</city>
+	<city>
+		<name>Lebanon, NH</name>
+		<airport>LEB</airport>
+		<xFact>0.896</xFact>
+		<yFact>0.2184</yFact>
+	</city>
+	<city>
+		<name>Manchester, NH</name>
+		<airport>MHT</airport>
+		<xFact>0.907</xFact>
+		<yFact>0.2362</yFact>
+	</city>
+	<city>
+		<name>Portsmouth, NH</name>
+		<airport>PSM</airport>
+		<xFact>0.915</xFact>
+		<yFact>0.2298</yFact>
+	</city>
+	<city>
+		<name>Bangor, ME</name>
+		<airport>BGR</airport>
+		<xFact>0.935</xFact>
+		<yFact>0.1489</yFact>
+	</city>
+	<city>
+		<name>Bar Harbor, ME</name>
+		<airport>BHB</airport>
+		<xFact>0.945</xFact>
+		<yFact>0.1634</yFact>
+	</city>
+	<city>
+		<name>Portland, ME</name>
+		<airport>PWM</airport>
+		<xFact>0.922</xFact>
+		<yFact>0.2039</yFact>
+	</city>
+	<city>
+		<name>Presque Isle, ME</name>
+		<airport>PQI</airport>
+		<xFact>0.938</xFact>
+		<yFact>0.0858</yFact>
+	</city>
+	<city>
+		<name>Rockland, ME</name>
+		<airport>RKD</airport>
+		<xFact>0.934</xFact>
+		<yFact>0.1861</yFact>
+	</city>
+	<city>
+		<name>Bellingham, WA</name>
+		<airport>BLI</airport>
+		<xFact>0.110</xFact>
+		<yFact>0.0259</yFact>
+	</city>
+	<city>
+		<name>Friday Harbor, WA</name>
+		<airport>FRD</airport>
+		<xFact>0.099</xFact>
+		<yFact>0.0275</yFact>
+	</city>
+	<city>
+		<name>Pasco, WA</name>
+		<airport>PSC</airport>
+		<xFact>0.150</xFact>
+		<yFact>0.1294</yFact>
+	</city>
+	<city>
+		<name>Port Angeles, WA</name>
+		<airport>CLM</airport>
+		<xFact>0.090</xFact>
+		<yFact>0.0405</yFact>
+	</city>
+	<city>
+		<name>Pullman, WA</name>
+		<airport>PUW</airport>
+		<xFact>0.180</xFact>
+		<yFact>0.1262</yFact>
+	</city>
+	<city>
+		<name>Spokane, WA</name>
+		<airport>GEG</airport>
+		<xFact>0.173</xFact>
+		<yFact>0.0922</yFact>
+	</city>
+	<city>
+		<name>Walla Walla, WA</name>
+		<airport>ALW</airport>
+		<xFact>0.164</xFact>
+		<yFact>0.1359</yFact>
+	</city>
+	<city>
+		<name>Wenatchee, WA</name>
+		<airport>EAT</airport>
+		<xFact>0.136</xFact>
+		<yFact>0.0728</yFact>
+	</city>
+	<city>
+		<name>Yakima, WA</name>
+		<airport>YKM</airport>
+		<xFact>0.126</xFact>
+		<yFact>0.0987</yFact>
+	</city>
+	<city>
+		<name>Casper, WY</name>
+		<airport>CPR</airport>
+		<xFact>0.334</xFact>
+		<yFact>0.3155</yFact>
+	</city>
+	<city>
+		<name>Cheyenne, WY</name>
+		<airport>CYS</airport>
+		<xFact>0.353</xFact>
+		<yFact>0.3722</yFact>
+	</city>
+	<city>
+		<name>Cody, WY</name>
+		<airport>COD</airport>
+		<xFact>0.297</xFact>
+		<yFact>0.2508</yFact>
+	</city>
+	<city>
+		<name>Gillette, WY</name>
+		<airport>GCC</airport>
+		<xFact>0.350</xFact>
+		<yFact>0.2654</yFact>
+	</city>
+	<city>
+		<name>Jackson Hole, WY</name>
+		<airport>JAC</airport>
+		<xFact>0.271</xFact>
+		<yFact>0.2686</yFact>
+	</city>
+	<city>
+		<name>Riverton, WY</name>
+		<airport>RIW</airport>
+		<xFact>0.309</xFact>
+		<yFact>0.3010</yFact>
+	</city>
+	<city>
+		<name>Rock Springs, WY</name>
+		<airport>RKS</airport>
+		<xFact>0.289</xFact>
+		<yFact>0.3544</yFact>
+	</city>
+	<city>
+		<name>Sheridan, WY</name>
+		<airport>SHR</airport>
+		<xFact>0.331</xFact>
+		<yFact>0.2492</yFact>
+	</city>
+	<city>
+		<name>Bismarck, ND</name>
+		<airport>BIS</airport>
+		<xFact>0.430</xFact>
+		<yFact>0.1845</yFact>
+	</city>
+	<city>
+		<name>Dickinson, ND</name>
+		<airport>DIK</airport>
+		<xFact>0.401</xFact>
+		<yFact>0.1861</yFact>
+	</city>
+	<city>
+		<name>Fargo, ND</name>
+		<airport>FAR</airport>
+		<xFact>0.490</xFact>
+		<yFact>0.1861</yFact>
+	</city>
+	<city>
+		<name>Grand Forks, ND</name>
+		<airport>GFK</airport>
+		<xFact>0.489</xFact>
+		<yFact>0.1489</yFact>
+	</city>
+	<city>
+		<name>Minot, ND</name>
+		<airport>MOT</airport>
+		<xFact>0.430</xFact>
+		<yFact>0.1359</yFact>
+	</city>
+	<city>
+		<name>Williston, ND</name>
+		<airport>ISN</airport>
+		<xFact>0.392</xFact>
+		<yFact>0.1359</yFact>
+	</city>
+	<city>
+		<name>Aberdeen, SD</name>
+		<airport>ABR</airport>
+		<xFact>0.472</xFact>
+		<yFact>0.2330</yFact>
+	</city>
+	<city>
+		<name>Pierre, SD</name>
+		<airport>PIR</airport>
+		<xFact>0.435</xFact>
+		<yFact>0.2702</yFact>
+	</city>
+	<city>
+		<name>Rapid City, SD</name>
+		<airport>RAP</airport>
+		<xFact>0.392</xFact>
+		<yFact>0.2929</yFact>
+	</city>
+	<city>
+		<name>Sioux Falls, SD</name>
+		<airport>FSD</airport>
+		<xFact>0.490</xFact>
+		<yFact>0.3010</yFact>
+	</city>
+	<city>
+		<name>Grand Island, NE</name>
+		<airport>GRI</airport>
+		<xFact>0.466</xFact>
+		<yFact>0.3997</yFact>
+	</city>
+	<city>
+		<name>Kearney, NE</name>
+		<airport>EAR</airport>
+		<xFact>0.453</xFact>
+		<yFact>0.4061</yFact>
+	</city>
+	<city>
+		<name>Lincoln, NE</name>
+		<airport>LNK</airport>
+		<xFact>0.486</xFact>
+		<yFact>0.4013</yFact>
+	</city>
+	<city>
+		<name>Scottsbluff, NE</name>
+		<airport>BFF</airport>
+		<xFact>0.388</xFact>
+		<yFact>0.3576</yFact>
+	</city>
+	<city>
+		<name>Bemidji, MN</name>
+		<airport>BJI</airport>
+		<xFact>0.520</xFact>
+		<yFact>0.1521</yFact>
+	</city>
+	<city>
+		<name>Brainerd, MN</name>
+		<airport>BRD</airport>
+		<xFact>0.536</xFact>
+		<yFact>0.1893</yFact>
+	</city>
+	<city>
+		<name>Duluth, MN</name>
+		<airport>DLH</airport>
+		<xFact>0.564</xFact>
+		<yFact>0.1748</yFact>
+	</city>
+	<city>
+		<name>Hibbing, MN</name>
+		<airport>HIB</airport>
+		<xFact>0.556</xFact>
+		<yFact>0.1440</yFact>
+	</city>
+	<city>
+		<name>International Falls, MN</name>
+		<airport>INL</airport>
+		<xFact>0.546</xFact>
+		<yFact>0.1181</yFact>
+	</city>
+	<city>
+		<name>Rochester, MN</name>
+		<airport>RST</airport>
+		<xFact>0.558</xFact>
+		<yFact>0.2848</yFact>
+	</city>
+	<city>
+		<name>St. Cloud, MN</name>
+		<airport>STC</airport>
+		<xFact>0.533</xFact>
+		<yFact>0.2249</yFact>
+	</city>
+	<city>
+		<name>Aniak, AK</name>
+		<airport>ANI</airport>
+		<xFact>0.085</xFact>
+		<yFact>0.8722</yFact>
+	</city>
+	<city>
+		<name>Barrow, AK</name>
+		<airport>BRW</airport>
+		<xFact>0.117</xFact>
+		<yFact>0.7314</yFact>
+	</city>
+	<city>
+		<name>Bethel, AK</name>
+		<airport>BET</airport>
+		<xFact>0.067</xFact>
+		<yFact>0.8706</yFact>
+	</city>
+	<city>
+		<name>Cordova, AK</name>
+		<airport>CDV</airport>
+		<xFact>0.145</xFact>
+		<yFact>0.9045</yFact>
+	</city>
+	<city>
+		<name>Deadhorse, AK</name>
+		<airport>SCC</airport>
+		<xFact>0.141</xFact>
+		<yFact>0.7605</yFact>
+	</city>
+	<city>
+		<name>Dillingham, AK</name>
+		<airport>DLG</airport>
+		<xFact>0.079</xFact>
+		<yFact>0.9110</yFact>
+	</city>
+	<city>
+		<name>Fairbanks, AK</name>
+		<airport>FAI</airport>
+		<xFact>0.138</xFact>
+		<yFact>0.8317</yFact>
+	</city>
+	<city>
+		<name>Galena, AK</name>
+		<airport>GAL</airport>
+		<xFact>0.104</xFact>
+		<yFact>0.8285</yFact>
+	</city>
+	<city>
+		<name>Gustavus, AK</name>
+		<airport>GST</airport>
+		<xFact>0.176</xFact>
+		<yFact>0.9223</yFact>
+	</city>
+	<city>
+		<name>Homer, AK</name>
+		<airport>HOM</airport>
+		<xFact>0.115</xFact>
+		<yFact>0.9142</yFact>
+	</city>
+	<city>
+		<name>Hoonah, AK</name>
+		<airport>HNH</airport>
+		<xFact>0.188</xFact>
+		<yFact>0.9466</yFact>
+	</city>
+	<city>
+		<name>Juneau, AK</name>
+		<airport>JNU</airport>
+		<xFact>0.197</xFact>
+		<yFact>0.9385</yFact>
+	</city>
+	<city>
+		<name>Kenai, AK</name>
+		<airport>ENA</airport>
+		<xFact>0.117</xFact>
+		<yFact>0.9061</yFact>
+	</city>
+	<city>
+		<name>Ketchikan, AK</name>
+		<airport>KTN</airport>
+		<xFact>0.213</xFact>
+		<yFact>0.9725</yFact>
+	</city>
+	<city>
+		<name>King Salmon, AK</name>
+		<airport>AKN</airport>
+		<xFact>0.087</xFact>
+		<yFact>0.9239</yFact>
+	</city>
+	<city>
+		<name>Kodiak, AK</name>
+		<airport>ADQ</airport>
+		<xFact>0.207</xFact>
+		<yFact>0.9401</yFact>
+	</city>
+	<city>
+		<name>Kotzebue, AK</name>
+		<airport>OTZ</airport>
+		<xFact>0.084</xFact>
+		<yFact>0.7864</yFact>
+	</city>
+	<city>
+		<name>Nome, AK</name>
+		<airport>OME</airport>
+		<xFact>0.069</xFact>
+		<yFact>0.8139</yFact>
+	</city>
+	<city>
+		<name>Petersburg, AK</name>
+		<airport>PSG</airport>
+		<xFact>0.207</xFact>
+		<yFact>0.9612</yFact>
+	</city>
+	<city>
+		<name>Sitka, AK</name>
+		<airport>SIT</airport>
+		<xFact>0.194</xFact>
+		<yFact>0.9579</yFact>
+	</city>
+	<city>
+		<name>St. Mary’s, AK</name>
+		<airport>KSM</airport>
+		<xFact>0.061</xFact>
+		<yFact>0.8560</yFact>
+	</city>
+	<city>
+		<name>Unalakleet, AK</name>
+		<airport>UNK</airport>
+		<xFact>0.085</xFact>
+		<yFact>0.8301</yFact>
+	</city>
+	<city>
+		<name>Unalaska, AK</name>
+		<airport>DUT</airport>
+		<xFact>0.022</xFact>
+		<yFact>0.9676</yFact>
+	</city>
+	<city>
+		<name>Valdez, AK</name>
+		<airport>VDZ</airport>
+		<xFact>0.139</xFact>
+		<yFact>0.8916</yFact>
+	</city>
+	<city>
+		<name>Wrangell, AK</name>
+		<airport>WRG</airport>
+		<xFact>0.213</xFact>
+		<yFact>0.9644</yFact>
+	</city>
+	<city>
+		<name>Yakutat, AK</name>
+		<airport>YAK</airport>
+		<xFact>0.173</xFact>
+		<yFact>0.9239</yFact>
+	</city>
+	<city>
+		<name>XXX</name>
+		<airport>XXX</airport>
+		<xFact>0.</xFact>
+		<yFact>0.</yFact>
+	</city>
+	<city>
+		<name>XXX</name>
+		<airport>XXX</airport>
+		<xFact>0.</xFact>
+		<yFact>0.</yFact>
+	</city>
+	<city>
+		<name>XXX</name>
+		<airport>XXX</airport>
+		<xFact>0.</xFact>
+		<yFact>0.</yFact>
+	</city>
+	<city>
+		<name>XXX</name>
+		<airport>XXX</airport>
+		<xFact>0.</xFact>
+		<yFact>0.</yFact>
+	</city>
+	<city>
+		<name>XXX</name>
+		<airport>XXX</airport>
+		<xFact>0.</xFact>
+		<yFact>0.</yFact>
+	</city>
+	<city>
+		<name>XXX</name>
+		<airport>XXX</airport>
+		<xFact>0.</xFact>
+		<yFact>0.</yFact>
+	</city>
+	<city>
+		<name>XXX</name>
+		<airport>XXX</airport>
+		<xFact>0.</xFact>
+		<yFact>0.</yFact>
+	</city>
+
+</Metrocodes>
