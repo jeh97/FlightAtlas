@@ -132,7 +132,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
     public void onBindViewHolder(CityAdapter.CityViewHolder holder, int position) {
         try {
             holder.text_name.setTextColor(Color.BLACK);
-            holder.text_name.setText(mData.get(position).getName());
+            holder.text_name.setText(mData.get(position).getCity());
             holder.text_airports.setTextColor(Color.BLACK);
             Metro metro = mData.get(position);
             String codes = "";
@@ -146,7 +146,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
                     }
                 }
                 if (numAirports > 1) {
-                    System.out.printf("%s, %s has %d airports: %s\n",metro.getName(),metro.getCountry(),numAirports,codes);
+                    System.out.printf("%s, %s has %d airports: %s\n",metro.getCity(),metro.getCountry(),numAirports,codes);
                 }
                 codes = codes.substring(2);
             } else {

@@ -18,34 +18,6 @@ import java.util.ArrayList;
  * Created by Jacob on 4/3/18.
  */
 
-//public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteViewHolder> {
-//    private LayoutInflater theInflater = null;
-//    public RouteAdapter(Context context) {
-//        super(context,R.layout.row_route_info);
-//        theInflater = LayoutInflater.from(getContext());
-//    }
-//    private View BindView(int position, View theView) {
-//        System.out.println("Binding view");
-//        Route route = getItem(position);
-//        TextView text_name = (TextView) theView.findViewById(R.id.text_name);
-//        text_name.setText(route.getOrigin().getCodeIATA());
-//        text_name.setTextColor(Color.BLACK);
-//
-//        TextView text_code = (TextView) theView.findViewById(R.id.text_code);
-//        text_code.setText(route.getDestination().getCodeIATA());
-//        text_code.setTextColor(Color.BLACK);
-//
-//        return theView;
-//    }
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//        if (convertView == null) {
-//            convertView = theInflater.inflate(R.layout.row_route_info,parent,false);
-//        }
-//        convertView = BindView(position,convertView);
-//        return convertView;
-//    }
-//}
 public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteViewHolder> {
     private ArrayList<Route> mData = new ArrayList<Route>();
     private Context context;
@@ -106,7 +78,7 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteViewHol
         try {
             Route route = mData.get(position);
             holder.text_destination.setTextColor(Color.BLACK);
-            holder.text_destination.setText(String.format("%s (%s)",route.getDestination().getCodeIATA(),route.getDestination().getCity().getName()));
+            holder.text_destination.setText(String.format("%s (%s)",route.getDestination().getCodeIATA(),route.getDestination().getCity().getCity()));
             holder.text_airline.setTextColor(Color.BLACK);
             String operators = "";
             for (int i = 0; i < route.getOperators().size(); i++) {

@@ -1,8 +1,14 @@
 package cs371m.jh54765.flightatlas;
 
 import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -25,6 +31,10 @@ import javax.xml.parsers.DocumentBuilderFactory;
  */
 
 public class Fetch {
+    public final int stepsToComplete = 6;
+    private ProgressBar progress;
+    private TextView progressMessage;
+    public ArrayList<String> progressMessages;
     public interface FetchCallback {
         void fetchStart();
         void fetchComplete(TreeMap<String,Metro> cities,
@@ -40,6 +50,24 @@ public class Fetch {
     public Fetch(FetchCallback fetchCallback, Context context) {
         this.fetchCallback = fetchCallback;
         this.context = context;
+
+        progressMessages = new ArrayList<>();
+        progressMessages.add("Starting fetch...");
+        progressMessages.add("Starting network loading...");
+        progressMessages.add("Loading airports...");
+        progressMessages.add("Loading airlines...");
+        progressMessages.add("Loading routes...");
+        progressMessages.add("Fixing city locations...");
+        progressMessages.add("Finishing up...");
+
+        MainActivity mainActivity = (MainActivity) context;
+
+        progress = mainActivity.findViewById(R.id.progressBar_loading);
+        progressMessage = mainActivity.findViewById(R.id.textView_loadingMessage);
+        progress.setMax(stepsToComplete*10000);
+        progress.setProgress(0);
+
+        progressMessage.setText(progressMessages.get(0));
 
         airportToState = new TreeMap<>();
         airportToState.put("ALB",", NY");
@@ -71,10 +99,12 @@ public class Fetch {
 
         new AsyncDownloader().execute();
     }
-    public class AsyncDownloader extends AsyncTask<String,Void,Void>{
+    public class AsyncDownloader extends AsyncTask<String,Double,Void>{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
+
             fetchCallback.fetchStart();
 
         }
@@ -88,6 +118,13 @@ public class Fetch {
 
         }
 
+        @Override
+        protected void onProgressUpdate(Double... values) {
+            super.onProgressUpdate(values);
+            progress.setProgress((int)(double)(values[0]*10000));
+            progressMessage.setText(progressMessages.get((int)(double)values[0]));
+        }
+
         protected Void doInBackground(String... urls) {
             // XXX Write this
             try {
@@ -98,6 +135,7 @@ public class Fetch {
             return null;
         }
         private Void loadXmlFromNetwork() {
+            publishProgress(1.0);
             Log.d("Fetch","LOAD XML");
             TreeMap<String,Metro> cities = new TreeMap<String,Metro>();
             TreeMap<String,Airport> airports = new TreeMap<String,Airport>();
@@ -110,19 +148,17 @@ public class Fetch {
             int lineLen;
             Scanner cityList;
             try {
-                Log.v("Fetch","Test 1");
                 routesURL = new URL(context.getString(R.string.routes_url));
                 airportsURL = new URL(context.getString(R.string.airports_url));
                 airlinesURL = new URL(context.getString(R.string.airlines_url));
 
-                Log.v("Fetch","Test 2");
-                Scanner airportsScanner = new Scanner(airportsURL.openStream());
-                Log.v("Fetch","Test 3");
-                Scanner airlinesScanner = new Scanner(airlinesURL.openStream());
-                Log.v("Fetch","Test 4");
-                Scanner routesScanner = new Scanner(routesURL.openStream());
-                Log.v("Fetch","Test 5");
 
+                Scanner airportsScanner = new Scanner(airportsURL.openStream());
+                Scanner airlinesScanner = new Scanner(airlinesURL.openStream());
+                Scanner routesScanner = new Scanner(routesURL.openStream());
+
+
+                publishProgress(2.0);
                 String current,airportID,name,city,
                         country,codeIATA,codeICAO,DST,Tz,
                         nextLn,fileName,xFactString,yFactString;
@@ -149,8 +185,7 @@ public class Fetch {
                         // see if city is in cities
                         Metro metro = cities.get(city+", "+country);
                         if (metro == null) {
-                            // if not, create
-                            metro = new Metro(city,country,timezone,DST,Tz);
+                            metro = new Metro(city,country,timezone,DST,Tz,latitude,longitude);
                             cities.put(city+", "+country,metro);
                         }
                         Airport airport = new Airport(metro,name,country,codeIATA,codeICAO,latitude,longitude,altitude,timezone,DST,Tz);
@@ -161,7 +196,7 @@ public class Fetch {
 
                 }
                 airportsScanner.close();
-                Log.v("Fetch","Test 6");
+                publishProgress(3.0);
 
                 String airlineID,airlineName,airlineAlias,IATAcode,ICAOcode,callsign,active;
                 while(airlinesScanner.hasNextLine()) {
@@ -183,6 +218,9 @@ public class Fetch {
 
                 }
                 airlinesScanner.close();
+
+                publishProgress(4.0);
+
                 String sourceAirport,sourceID,destAirport,destID,codeshare,stops,equipment;
                 while(routesScanner.hasNextLine()) {
                     current = routesScanner.nextLine();
@@ -211,6 +249,81 @@ public class Fetch {
                     }
                 }
                 routesScanner.close();
+
+
+                publishProgress(5.0);
+                Log.d("Fetch","Cleaning up airlines");
+                // Go through metros and remove ones with no commercial airports, and remove their airports
+                ArrayList<String> airlineKeys = new ArrayList<>(airlines.keySet());
+                ArrayList<String> cityKeys = new ArrayList<>(cities.keySet());
+                for (int i = 0; i < airlineKeys.size(); i++) {
+                    publishProgress(5.0+i/(double)(airlineKeys.size()+cityKeys.size()));
+                    Airline airline = airlines.get(airlineKeys.get(i));
+                    if (airline.getRoutes().size() <= 0) {
+                        airlines.remove(airlineKeys.get(i));
+                    }
+                }
+
+                Log.d("Fetch","Cleaning up Cities");
+                for (int i = 0; i < cityKeys.size(); i++) {
+                    publishProgress(5.0+(airlineKeys.size()+i)/(double)(airlineKeys.size()+cityKeys.size()));
+                    Metro metro = cities.get(cityKeys.get(i));
+//                    Log.d("Fetch",String.format("Got metro %s",metro.getCity()+", "+metro.getCountry()));
+                    ArrayList<Airport> cityAirports = metro.getAirports();
+                    boolean hasCommercialAirport = false;
+                    for (int k = 0; k < cityAirports.size(); k++) {
+                        Airport airport = cityAirports.get(k);
+//                        Log.v("Fetch",String.format("Got airport %s",airport.getCodeIATA()));
+                        if (!airport.hasRoutes()) {
+                            // remove airport
+                            metro.removeAirport(airport);
+                            airports.remove(airport.getCodeIATA());
+                        } else {
+                            hasCommercialAirport = true;
+                        }
+                    }
+                    if (!hasCommercialAirport) {
+//                        Log.d("Fetch",String.format("Removing city: %s",cityKeys.get(i)));
+                        cities.remove(cityKeys.get(i));
+
+                    } else {
+//                        Log.d("Fetch",String.format("%s has a commerical airport",cityKeys.get(i)));
+                        // if not, create
+                        // get lat lng
+                        LatLng pos = null;
+                        Geocoder geo = new Geocoder(context);
+                        try {
+                            double lLLat = metro.getLatitude()-10;
+                            double lLLng = metro.getLongitude()-10;
+                            double uRLat = metro.getLatitude()+10;
+                            double uRLng = metro.getLongitude()+10;
+
+                            if (lLLat < -180) {
+                                lLLat = -180.0;
+                            }
+                            if (lLLng < -180) {
+                                lLLng += 360;
+                            }
+                            if (uRLat > 180) {
+                                uRLat = 180.0;
+                            }
+                            if (uRLng > 180) {
+                                uRLng -= 360;
+                            }
+
+                            List<Address> locations = geo.getFromLocationName(cityKeys.get(i),
+                                    1, lLLat, lLLng, uRLat, uRLng);
+                            Address add = locations.get(0);
+                        } catch(Exception e) {
+                            Log.e("Fetch",e.getMessage());
+                            Log.e("Fetch",String.format("City was %s",metro.getCity()+", ",metro.getCountry()));
+                        }
+                    }
+
+                }
+
+                publishProgress(6.0);
+
                 fetchCallback.fetchComplete(cities,airports,routes,airlines,routeCodes);
 
 
@@ -232,5 +345,7 @@ public class Fetch {
 
 
     }
+
+
 
 }

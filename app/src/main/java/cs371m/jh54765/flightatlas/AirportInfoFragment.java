@@ -79,7 +79,7 @@ public class AirportInfoFragment extends Fragment {
 
         this.text_name.setText(airport.getName());
         this.text_code.setText(airport.getCodeIATA());
-        this.text_city.setText(String.format("%s, %s", airport.getCity().getName(),airport.getCity().getCountry()));
+        this.text_city.setText(String.format("%s, %s", airport.getCity().getCity(),airport.getCity().getCountry()));
         this.text_coords.setText(String.format("%5.2f, %5.2f",airport.getLatitude(),airport.getLongitude()));
         this.listView = getView().findViewById(R.id.recyclerView);
         initRecyclerView();

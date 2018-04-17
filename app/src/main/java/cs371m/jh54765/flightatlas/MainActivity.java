@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
     public TreeMap<String,Airline> airlines;
     public ArrayList<String> routeCodes;
 
-    public SQLiteDatabase flightDb;
-    private DatabaseHelper dbHelper;
+    public DBManager db;
+
 
     public Globals globals;
 
@@ -50,12 +50,46 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
 
         // for each airline, create airline entry
         ArrayList<String> airlineCodes = new ArrayList<String>(airlines.keySet());
-//        for (int i = 0; i < airlineCodes.size(); i++) {
-//            flightDb.
-//        }
+        ArrayList<String> cityCodes = new ArrayList<String>(airlines.keySet());
+        ArrayList<String> airportCodes = new ArrayList<String>(airlines.keySet());
+        ArrayList<String> routeKeys = new ArrayList<String>(routes.keySet());
+        for (int i = 0; i < airlineCodes.size(); i++) {
+            Airline airline = airlines.get(airlineCodes.get(i));
+            if (airline.getRoutes().size()> 0) {
+                try {
+                    db.addAirline(airlines.get(airlineCodes.get(i)));
+                } catch (Exception e) {
+                    Log.e("MainActivity",e.getMessage());
+                }
+            }
+        }
         // for each city, make city entry
+        for (int i = 0; i < airlineCodes.size(); i++) {
+            Metro city = cities.get(cityCodes.get(i));
+            boolean hasCommercialAirport = false;
+            for (int k = 0; k < city.getAirports().size(); k++) {
+                hasCommercialAirport = hasCommercialAirport || city.getAirports().get(k).hasRoutes();
+            }
+            if (hasCommercialAirport) {
+                db.addMetro(cities.get(cityCodes.get(i)));
+            }
+        }
         // for each airport, make airport entry
+        for (int i = 0; i < airlineCodes.size(); i++) {
+            Airport airport = airports.get(airportCodes.get(i));
+            if (airport.hasRoutes()) {
+                try {
+                    db.addAirport(airport);
+                } catch (Exception e) {
+                    Log.e("MainActivity",e.getMessage());
+                }
+            }
+        }
         // for each route, make route entry
+        for (int i = 0; i < airlineCodes.size(); i++) {
+            db.addRoute(routes.get(routeKeys.get(i)));
+        }
+
 
 
 
@@ -78,13 +112,7 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
     }
 
     private void initFlightDB() {
-        dbHelper = new DatabaseHelper(this);
-        try {
-            dbHelper.createDatabase();
-        } catch (IOException e) {
-            Log.e("DB","Fail to create database");
-        }
-        flightDb = dbHelper.getReadableDatabase();
+        db = DBManager.getInstance(this);
     }
 
     @Override
@@ -95,7 +123,6 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        initFlightDB();
 
         mapHolder = new MapHolder(getApplicationContext());
         mapFragment = SupportMapFragment.newInstance();
@@ -108,9 +135,8 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
 
         launchLoadingFragment();
 
+        initFlightDB();
 
-        Log.d("MainActivity","Fetching");
-        new Fetch(MainActivity.this,getApplicationContext());
 //        launchListActivity();
 
 
