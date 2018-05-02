@@ -49,7 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void createDatabase() throws IOException {
-        this.getReadableDatabase();
+        this.getWritableDatabase();
         try {
             copyDatabase();
         } catch (IOException e) {
@@ -57,6 +57,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } finally {
             this.close();
         }
+    }
+
+    public void startWrite() {
+        this.getWritableDatabase();
+    }
+    public void endWrite() {
+        this.close();
     }
 
     @Override

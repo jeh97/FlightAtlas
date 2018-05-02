@@ -6,10 +6,22 @@
     <string name="airports_url">https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat</string>
     <string name="airlines_url">https://raw.githubusercontent.com/jpatokal/openflights/master/data/airlines.dat</string>
     <string-array name="airports_spinner">
+        <item>IATA</item>
+
         <item>Name</item>
-        <item>IATA Code</item>
+        <item>City</item>
+        <item>Country</item>
+    </string-array>
+    <string-array name="airlines_spinner">
+        <item>Name</item>
+        <item>IATA</item>
+        <item>Country</item>
+    </string-array>
+    <string-array name="cities_spinner">
         <item>City</item>
         <item>Country</item>
     </string-array>
     <string name="title_activity_maps">Map</string>
+    <string name="list_options_switch_off">DESC</string>
+    <string name="list_options_switch_on">ASC</string>
 </resources>

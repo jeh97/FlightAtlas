@@ -1,4 +1,5 @@
 CREATE TABLE IF NOT EXISTS "airlines" (
+  "_id" integer PRIMARY KEY AUTOINCREMENT NOT NULL,
   "name" text NOT NULL,
   "alias" text(128),
   "IATA" text(128) PRIMARY KEY,
@@ -8,6 +9,7 @@ CREATE TABLE IF NOT EXISTS "airlines" (
 );
 
 CREATE TABLE IF NOT EXISTS "airports" (
+  "_id" integer PRIMARY KEY AUTOINCREMENT NOT NULL,
   "name" text NOT NULL,
   "city" text(128),
   "country" text(128),
@@ -23,6 +25,7 @@ CREATE TABLE IF NOT EXISTS "airports" (
 );
 
 CREATE TABLE IF NOT EXISTS "metros" (
+  "_id" integer PRIMARY KEY AUTOINCREMENT NOT NULL,
   "city" text NOT NULL,
   "country" text(128),
   "timezone" double(128),

@@ -2,6 +2,7 @@ package cs371m.jh54765.flightatlas;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -15,13 +16,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
 public class MainActivity extends AppCompatActivity implements Fetch.FetchCallback {
-
-    private boolean highlight_dest = true;
-    private boolean draw_all_routes = true;
 
     private SupportMapFragment mapFragment;
     private MapHolder mapHolder;
@@ -49,34 +48,36 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
                               ArrayList<String> routeCodes) {
 
         // for each airline, create airline entry
-        ArrayList<String> airlineCodes = new ArrayList<String>(airlines.keySet());
-        ArrayList<String> cityCodes = new ArrayList<String>(airlines.keySet());
-        ArrayList<String> airportCodes = new ArrayList<String>(airlines.keySet());
-        ArrayList<String> routeKeys = new ArrayList<String>(routes.keySet());
-        for (int i = 0; i < airlineCodes.size(); i++) {
-            Airline airline = airlines.get(airlineCodes.get(i));
-            if (airline.getRoutes().size()> 0) {
+        ArrayList<String> airlineCodes = new ArrayList<>(airlines.keySet());
+        ArrayList<String> cityCodes = new ArrayList<>(airlines.keySet());
+        ArrayList<String> airportCodes = new ArrayList<>(airlines.keySet());
+        ArrayList<String> routeKeys = new ArrayList<>(routes.keySet());
+
+        for (Map.Entry<String,Airline> entry: airlines.entrySet()) {
+            Airline airline = entry.getValue();
+            if (airline.getRoutes().size() > 0) {
                 try {
-                    db.addAirline(airlines.get(airlineCodes.get(i)));
+                    db.addAirline(airline);
                 } catch (Exception e) {
                     Log.e("MainActivity",e.getMessage());
                 }
             }
         }
+
         // for each city, make city entry
-        for (int i = 0; i < airlineCodes.size(); i++) {
-            Metro city = cities.get(cityCodes.get(i));
+        for (Map.Entry<String,Metro> entry: cities.entrySet()) {
+            Metro city = entry.getValue();
             boolean hasCommercialAirport = false;
             for (int k = 0; k < city.getAirports().size(); k++) {
                 hasCommercialAirport = hasCommercialAirport || city.getAirports().get(k).hasRoutes();
             }
             if (hasCommercialAirport) {
-                db.addMetro(cities.get(cityCodes.get(i)));
+                db.addMetro(city);
             }
         }
         // for each airport, make airport entry
-        for (int i = 0; i < airlineCodes.size(); i++) {
-            Airport airport = airports.get(airportCodes.get(i));
+        for (Map.Entry<String,Airport> entry: airports.entrySet()) {
+            Airport airport = entry.getValue();
             if (airport.hasRoutes()) {
                 try {
                     db.addAirport(airport);
@@ -86,11 +87,9 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
             }
         }
         // for each route, make route entry
-        for (int i = 0; i < airlineCodes.size(); i++) {
-            db.addRoute(routes.get(routeKeys.get(i)));
+        for (Map.Entry<String,Route> entry: routes.entrySet()) {
+            db.addRoute(entry.getValue());
         }
-
-
 
 
         Log.d("MainActivity","Fetch complete");
@@ -124,20 +123,22 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
         setSupportActionBar(toolbar);
 
 
-        mapHolder = new MapHolder(getApplicationContext());
+        mapHolder = new MapHolder(this);
         mapFragment = SupportMapFragment.newInstance();
+//        mapFragment = new MapFragment();
         mapFragment.getMapAsync(mapHolder);
+
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.main_fragment, mapFragment)
                 .hide(mapFragment)
                 .commit();
 
-        launchLoadingFragment();
+//        launchLoadingFragment();
 
         initFlightDB();
 
-//        launchListActivity();
+        launchListFragment();
 
 
     }
@@ -163,16 +164,22 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
 
     public void settingsButtonIsPressed() {
         Intent intent = new Intent(this,TheSettings.class);
-        intent.putExtra("highlight_dest",this.highlight_dest);
-        intent.putExtra("draw_all_routes",this.draw_all_routes);
+        intent.putExtra("show_markers",globals.SHOW_MARKERS);
+        intent.putExtra("show_routes",globals.SHOW_ROUTES);
         startActivityForResult(intent,1);
 
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        this.highlight_dest = data.getBooleanExtra("highlight_dest",true);
-        this.draw_all_routes = data.getBooleanExtra("draw_all_routes",true);
+        globals.SHOW_MARKERS = data.getBooleanExtra("show_markers",true);
+        globals.SHOW_ROUTES = data.getBooleanExtra("show_routes",true);
+        try {
+            ListFragment frag = (ListFragment)getSupportFragmentManager().findFragmentById(R.id.main_fragment);
+            frag.updateList();
+        } catch (ClassCastException e) {
+            Log.e("MainActivity",e.getMessage());
+        }
     }
 
 
@@ -185,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
 
         ListFragment listFragment = new ListFragment();
         fragmentTransaction.add(R.id.main_fragment,listFragment);
-        fragmentTransaction.addToBackStack("list");
+//        fragmentTransaction.addToBackStack("list");
         fragmentTransaction.commit();
     }
     public void launchLoadingFragment() {
@@ -198,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
         fragmentTransaction.commit();
     }
 
-    public void toMapFragment(Airport airport) {
+    public void toMapFragment(String codeIATA) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 //        fragmentTransaction.add(R.id.main_fragment,mapFragment);
@@ -206,7 +213,18 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
         fragmentTransaction.show(mapFragment);
         fragmentTransaction.addToBackStack("mapFragment");
         fragmentTransaction.commit();
-        mapHolder.showAirport(airport);
+        mapHolder.showAirport(codeIATA,true);
+    }
+
+    public void toMapFragmentAirline(String codeIATA) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.add(R.id.main_fragment,mapFragment);
+        fragmentTransaction.remove(fragmentManager.findFragmentById(R.id.main_fragment));
+        fragmentTransaction.show(mapFragment);
+        fragmentTransaction.addToBackStack("mapFragment");
+        fragmentTransaction.commit();
+        mapHolder.showAirline(codeIATA,true);
     }
 
     @Override

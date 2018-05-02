@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -19,27 +20,16 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <TextView
-        android:id="@+id/textView_Region"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="Regions"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
-
 
     <Switch
-        android:id="@+id/switch_dest"
+        android:id="@+id/switch_markers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Highlight Destinations"
+        android:text="Draw Markers  "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_Region" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
     <Switch
         android:id="@+id/switch_routes"
@@ -48,17 +38,17 @@
         android:layout_marginStart="8dp"
 
         android:layout_marginTop="8dp"
-        android:text="Draw routes to airports outside of region"
+        android:text="Draw Routes    "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch_dest" />
+        app:layout_constraintTop_toBottomOf="@+id/switch_markers" />
 
     <Button
         android:id="@+id/button_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="CANCEL"
         android:onClick="cancelButtonIsPressed"
+        android:text="CANCEL"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_ok"
         app:layout_constraintHorizontal_bias="0.5"
@@ -69,11 +59,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="OK"
         android:onClick="okButtonIsPressed"
+        android:text="OK"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_cancel" />
+
+    <Button
+        android:id="@+id/button_enableAirlines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Enable all Airlines"
+        app:layout_constraintEnd_toStartOf="@+id/button_disableAirlines"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_routes"
+        android:onClick="enableButtonIsPressed"/>
+
+    <Button
+        android:id="@+id/button_disableAirlines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Disable all Airlines"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button_enableAirlines"
+        app:layout_constraintTop_toBottomOf="@+id/switch_routes"
+        android:onClick="disableButtonIsPressed"/>
 
 </android.support.constraint.ConstraintLayout>

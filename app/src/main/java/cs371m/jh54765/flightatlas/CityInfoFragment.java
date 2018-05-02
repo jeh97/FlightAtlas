@@ -5,11 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,26 +14,18 @@ import android.widget.TextView;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import java.util.ArrayList;
-
-/**
- * Created by Jacob on 4/3/18.
- */
-
-public class AirportInfoFragment extends Fragment {
+public class CityInfoFragment extends Fragment {
     private MainActivity mainActivity;
     private ListView listView;
     private Context context;
-    private TextView text_name;
-    private TextView text_code;
+    private TextView text_city;
+    private TextView text_country;
     private TextView text_coords;
 
-    private TextView text_city;
-    private String code;
-    private String name;
-    private LatLng coords;
     private String city;
-    protected AirportInfoFragment fragment;
+    private String country;
+    private LatLng coords;
+    protected CityInfoFragment fragment;
 
     @Nullable
     @Override
@@ -46,7 +34,8 @@ public class AirportInfoFragment extends Fragment {
         View v = inflater.inflate(R.layout.airportinfo_fragment, container, false);
         mainActivity = (MainActivity) getActivity();
         Bundle args = getArguments();
-        this.code = args.getString("airport");
+        this.city = args.getString("city");
+        this.country = args.getString("country");
         context = getContext();
         mainActivity = (MainActivity) context;
 
@@ -55,11 +44,12 @@ public class AirportInfoFragment extends Fragment {
         return v;
     }
 
-    private void loadAirportInfo() {
-        Cursor cursor = mainActivity.db.getAirportInfo(code);
+
+    private void loadCityInfo() {
+        Cursor cursor = mainActivity.db.getCityInfo(city,country);
 
         cursor.moveToFirst();
-        this.name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+        this.city = cursor.getString(cursor.getColumnIndexOrThrow("city"));
         double latitude = cursor.getDouble(cursor.getColumnIndexOrThrow("latitude"));
         double longitude = cursor.getDouble(cursor.getColumnIndexOrThrow("longitude"));
         this.coords = new LatLng(latitude,longitude);
@@ -67,10 +57,9 @@ public class AirportInfoFragment extends Fragment {
         String country = cursor.getString(cursor.getColumnIndexOrThrow("country"));
         this.city = String.format("%s, %s",city,country);
 
-        this.text_name.setText(name);
-        this.text_code.setText(code);
+        this.text_city.setText(city);
         this.text_coords.setText(String.format("%f, %f",latitude,longitude));
-        this.text_city.setText(this.city);
+        this.text_country.setText(country);
 
     }
 
@@ -83,32 +72,31 @@ public class AirportInfoFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         this.listView = getView().findViewById(R.id.listView_routes);
 
-        this.text_name = getView().findViewById(R.id.textView_name);
-        this.text_code = getView().findViewById(R.id.textView_code);
-        this.text_coords = getView().findViewById(R.id.textView_coords);
-        this.text_city = getView().findViewById(R.id.textView_city);
+        this.text_city = getView().findViewById(R.id.textView_cityCity);
+        this.text_country = getView().findViewById(R.id.textView_cityCountry);
+        this.text_coords = getView().findViewById(R.id.textView_cityCoords);
 
-        loadAirportInfo();
+        loadCityInfo();
 
         this.text_coords.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                mainActivity.toMapFragment(code);
+                Log.d("UI Click","Clicked coords");
+//                mainActivity.toMapFragment(code);
             }
         });
 
 
-        loadRoutes();
+        loadAirports();
 
 
     }
 
-    private void loadRoutes() {
-        Cursor cursor = mainActivity.db.getAirportRoutes(code);
+    private void loadAirports() {
+        Cursor cursor = mainActivity.db.getCityAirports(city,country);
 
-        AirportRouteAdapter adapter = new AirportRouteAdapter(mainActivity,cursor,false);
-        this.listView.setAdapter(adapter);
+//        AirportRouteAdapter adapter = new AirportRouteAdapter(mainActivity,cursor,false);
+//        this.listView.setAdapter(adapter);
 
     }
 

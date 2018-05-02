@@ -1,20 +1,30 @@
 package cs371m.jh54765.flightatlas;
 
+import android.app.Fragment;
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -33,6 +43,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 
 /**
  * Created by thunt on 10/25/16.
@@ -44,13 +55,14 @@ public class MapHolder implements OnMapReadyCallback {
     http://theoryapp.com/parse-json-in-java/
      */
     private float defaultZoom = 4.0f;
+    private Globals globals;
     private static class NameToLatLngTask extends AsyncTask<String, Object, LatLng> {
         public interface OnLatLngCallback {
             public void onLatLng(LatLng a);
         }
 
         OnLatLngCallback cb;
-        Context context;
+        MainActivity context;
 
         URL geocoderURLBuilder(String address) {
             URL result = null;
@@ -77,7 +89,7 @@ public class MapHolder implements OnMapReadyCallback {
             return result;
         }
 
-        public NameToLatLngTask(Context ctx, String addr, OnLatLngCallback _cb) {
+        public NameToLatLngTask(MainActivity ctx, String addr, OnLatLngCallback _cb) {
             context = ctx;
             execute(addr);
             cb = _cb;
@@ -206,10 +218,12 @@ public class MapHolder implements OnMapReadyCallback {
 
 
     private GoogleMap gMap;
-    private Context context;
+    private MainActivity context;
+    public ImageView infoButton;
 
-    public MapHolder(Context ctx) {
+    public MapHolder(MainActivity ctx) {
         context = ctx;
+        globals = Globals.getInstance();
     }
 
     public boolean warnIfNotReady() {
@@ -223,29 +237,135 @@ public class MapHolder implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         gMap = googleMap;
+        gMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+            @Override
+            public View getInfoWindow(Marker marker) {
+                return null;
+            }
+
+            @Override
+            public View getInfoContents(Marker marker) {
+                final String IATA = marker.getTitle();
+                LinearLayout info = new LinearLayout(context);
+                info.setOrientation(LinearLayout.VERTICAL);
+
+                TextView title = new TextView(context);
+                title.setTextColor(Color.BLACK);
+                title.setGravity(Gravity.CENTER);
+                title.setTypeface(null, Typeface.BOLD);
+                title.setText(marker.getTitle());
+
+                TextView snippet = new TextView(context);
+                snippet.setGravity(Gravity.CENTER);
+                snippet.setTextColor(Color.GRAY);
+                snippet.setText(marker.getSnippet());
+
+                ImageView infoButton = new ImageView(context);
+                infoButton = new ImageView(context);
+                infoButton.setImageResource(android.R.drawable.ic_menu_info_details);
+                infoButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                public void onClick(View view) {
+                    Log.d("MapHolder",IATA);
+                }
+            });
+
+                info.addView(title);
+                info.addView(snippet);
+                info.addView(infoButton);
+
+                return info;
+            }
+        });
+
+        LatLng pos = new LatLng(0,0);
     }
 
-    public void showAirport(Airport airport) {
+    public void showAirport(String IATA,boolean moveCamera) {
         if (warnIfNotReady())
             return;
         gMap.clear();
-        LatLng pos = new LatLng(airport.getLatitude(),airport.getLongitude());
-        gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos,defaultZoom));
-        gMap.addMarker(new MarkerOptions().position(pos));
-        Route route;
-        ArrayList<Route> routes = airport.getRoutes();
-        int numRoutes = routes.size();
-        for (int i = 0; i < numRoutes; i++) {
-            route = routes.get(i);
-            Airport dest = route.getDestination();
-            LatLng pos2 = new LatLng(dest.getLatitude(),dest.getLongitude());
-            DrawLine(pos,pos2);
-//            DrawDestDot(pos2);
-            gMap.addMarker(new MarkerOptions().position(pos2));
+        final String originIATA = IATA;
+        Cursor cursor = context.db.getAirportInfo(IATA);
+        cursor.moveToFirst();
+        double lat = cursor.getDouble(cursor.getColumnIndexOrThrow("latitude"));
+        double lng = cursor.getDouble(cursor.getColumnIndexOrThrow("longitude"));
+        LatLng pos = new LatLng(lat,lng);
+        String city = cursor.getString(cursor.getColumnIndexOrThrow("city"));
+        String country = cursor.getString(cursor.getColumnIndexOrThrow("country"));
+        String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+        // Move camera if entering map from listviews
+        if (moveCamera) gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos,defaultZoom));
+        // Origin Marker
+        if (globals.SHOW_MARKERS) {
+            Marker originMarker = gMap.addMarker(new MarkerOptions()
+                    .position(pos)
+                    .title(IATA)
+                    .snippet(String.format("%s\n%s, %s", name, city, country))
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+            originMarker.showInfoWindow();
         }
-        DrawSrcDot(pos);
+        ArrayList<String> routesList = context.db.getAirportRoutesList(IATA);
+        int numRoutes = routesList.size();
+        for (int i = 0; i < numRoutes; i++) {
+            String destination = routesList.get(i);
+            cursor = context.db.getAirportInfo(destination);
+            cursor.moveToFirst();
+            lat = cursor.getDouble(cursor.getColumnIndexOrThrow("latitude"));
+            lng = cursor.getDouble(cursor.getColumnIndexOrThrow("longitude"));
+            LatLng pos2 = new LatLng(lat,lng);
+            city = cursor.getString(cursor.getColumnIndexOrThrow("city"));
+            country = cursor.getString(cursor.getColumnIndexOrThrow("country"));
+            name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+            if (globals.SHOW_ROUTES) DrawLine(pos,pos2);
+//            DrawDestDot(pos2);
+            if (globals.SHOW_MARKERS) {
+                Marker marker = gMap.addMarker(new MarkerOptions()
+                        .position(pos2)
+                        .title(destination)
+                        .snippet(String.format("%s\n%s, %s",name,city,country)));
+            }
+
+
+            gMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                @Override
+                public void onInfoWindowClick(Marker marker) {
+                    String airport = marker.getTitle();
+                    showAirport(airport,false);
+                }
+            });
+            gMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                int lastIndex = -1;
+                @Override
+                public boolean onMarkerClick(Marker marker) {
+                    if (lastIndex>0) {
+                        marker.hideInfoWindow();
+                        return false;
+                    }
+                    marker.showInfoWindow();
+                    lastIndex*=-1;
+                    return false;
+                }
+            });
+        }
+//        if (infoButton == null) {
+//            infoButton = new ImageView(context);
+//            infoButton.setImageResource(android.R.drawable.ic_menu_info_details);
+//        }
+//        infoButton.setTooltipText(IATA);
+//        infoButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Log.d("MapHolder",originIATA);
+//            }
+//        });
+//        Fragment frag = (Fragment) context.findViewById(R.id.main_fragment);
+//        frag.addView
+
 
     }
+
+
 
     public void DrawLine(LatLng start, LatLng end) {
         Polyline line = gMap.addPolyline(new PolylineOptions()
@@ -254,22 +374,62 @@ public class MapHolder implements OnMapReadyCallback {
         .color(Color.rgb(128,0,0)));
     }
 
-    public void DrawDestDot(LatLng pos) {
-        Circle circle = gMap.addCircle(new CircleOptions()
-        .center(pos)
-        .radius(2)
-        .fillColor(Color.BLUE)
-        .strokeColor(Color.BLACK)
-        .strokeWidth(1));
 
-    }
-    public void DrawSrcDot(LatLng pos) {
-        Circle circle = gMap.addCircle(new CircleOptions()
-                .center(pos)
-                .radius(4)
-                .fillColor(Color.RED)
-                .strokeColor(Color.BLACK)
-                .strokeWidth(1));
+    public void showAirline(String IATA, boolean moveCamera) {
+        if (warnIfNotReady()) {
+            return;
+        }
 
+        gMap.clear();
+        Cursor cursor = context.db.getAirlineRoutes(IATA);
+        TreeMap<String,Marker> markers = new TreeMap<>();
+        while (cursor.moveToNext()) {
+            String origIATA = cursor.getString(cursor.getColumnIndexOrThrow("origIATA"));
+            String origName = cursor.getString(cursor.getColumnIndexOrThrow("origName"));
+            String origCity = cursor.getString(cursor.getColumnIndexOrThrow("origCity"));
+            String origCountry = cursor.getString(cursor.getColumnIndexOrThrow("origCountry"));
+            Double origLat = cursor.getDouble(cursor.getColumnIndexOrThrow("origLat"));
+            Double origLng = cursor.getDouble(cursor.getColumnIndexOrThrow("origLng"));
+            LatLng origLatLng = new LatLng(origLat,origLng);
+
+            String destIATA = cursor.getString(cursor.getColumnIndexOrThrow("destIATA"));
+            String destName = cursor.getString(cursor.getColumnIndexOrThrow("destName"));
+            String destCity = cursor.getString(cursor.getColumnIndexOrThrow("destCity"));
+            String destCountry = cursor.getString(cursor.getColumnIndexOrThrow("destCountry"));
+            Double destLat = cursor.getDouble(cursor.getColumnIndexOrThrow("destLat"));
+            Double destLng = cursor.getDouble(cursor.getColumnIndexOrThrow("destLng"));
+            LatLng destLatLng = new LatLng(destLat,destLng);
+
+            if (globals.SHOW_MARKERS) {
+                if (!markers.containsKey(origIATA)) {
+                    Marker marker = gMap.addMarker(new MarkerOptions()
+                            .position(origLatLng)
+                            .title(origIATA)
+                            .snippet(String.format("%s\n%s, %s", origName, origCity, origCountry))
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                    markers.put(origIATA,marker);
+                }
+                if (!markers.containsKey(destIATA)) {
+                    Marker marker = gMap.addMarker(new MarkerOptions()
+                            .position(destLatLng)
+                            .title(destIATA)
+                            .snippet(String.format("%s\n%s, %s", destName, destCity, destCountry))
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                    markers.put(destIATA,marker);
+                }
+            }
+            if (globals.SHOW_ROUTES) {
+                DrawLine(origLatLng,destLatLng);
+            }
+
+
+        }
+        gMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                marker.showInfoWindow();
+                return false;
+            }
+        });
     }
 }

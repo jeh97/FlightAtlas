@@ -18,16 +18,43 @@
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/textView_title"
+        android:gravity="center_vertical"
+        android:id="@+id/linearLayout_options">
+
+        <Spinner
+            android:id="@+id/spinner_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Switch
+            android:id="@+id/switch_asc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/list_options_switch_off"/>
+
+        <TextView
+            android:id="@+id/textView_asc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/list_options_switch_on"
+            android:textColor="#000000"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar_bottom"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_title">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_options">
 
         <!--<ListView-->
         <!--android:id="@+id/listView"-->
@@ -35,18 +62,18 @@
         <!--android:layout_height="match_parent">-->
 
         <!--</ListView>-->
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <ListView
+            android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </android.support.v7.widget.RecyclerView>
+        </ListView>
 
     </LinearLayout>
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_bottom"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/linearLayout_toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,10 +84,9 @@
             android:id="@+id/toolbarcontainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
+            android:gravity="center_horizontal|center"
             android:orientation="horizontal"
-            android:weightSum="3"
-            >
+            android:weightSum="3">
 
             <Button
                 android:id="@+id/button_airports"
@@ -74,8 +100,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Cities"
-                />
+                android:text="Cities" />
 
             <Button
                 android:id="@+id/button_airlines"
@@ -84,17 +109,7 @@
                 android:layout_weight="1"
                 android:text="Airlines" />
         </LinearLayout>
-    </android.support.v7.widget.Toolbar>
+    </LinearLayout>
 
-    <Spinner
-        android:id="@+id/spinner_sortby"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toStartOf="@+id/textView_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

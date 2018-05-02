@@ -245,6 +245,7 @@ public class Fetch {
                             routes.put(sourceAirport+destAirport, thisRoute);
                         }
                         thisRoute.addOperator(arln);
+                        arln.addRoute(thisRoute);
 
                     }
                 }
@@ -256,71 +257,71 @@ public class Fetch {
                 // Go through metros and remove ones with no commercial airports, and remove their airports
                 ArrayList<String> airlineKeys = new ArrayList<>(airlines.keySet());
                 ArrayList<String> cityKeys = new ArrayList<>(cities.keySet());
-                for (int i = 0; i < airlineKeys.size(); i++) {
-                    publishProgress(5.0+i/(double)(airlineKeys.size()+cityKeys.size()));
-                    Airline airline = airlines.get(airlineKeys.get(i));
-                    if (airline.getRoutes().size() <= 0) {
-                        airlines.remove(airlineKeys.get(i));
-                    }
-                }
+//                for (int i = 0; i < airlineKeys.size(); i++) {
+//                    publishProgress(5.0+i/(double)(airlineKeys.size()+cityKeys.size()));
+//                    Airline airline = airlines.get(airlineKeys.get(i));
+//                    if (airline.getRoutes().size() <= 0) {
+//                        airlines.remove(airlineKeys.get(i));
+//                    }
+//                }
 
                 Log.d("Fetch","Cleaning up Cities");
-                for (int i = 0; i < cityKeys.size(); i++) {
-                    publishProgress(5.0+(airlineKeys.size()+i)/(double)(airlineKeys.size()+cityKeys.size()));
-                    Metro metro = cities.get(cityKeys.get(i));
-//                    Log.d("Fetch",String.format("Got metro %s",metro.getCity()+", "+metro.getCountry()));
-                    ArrayList<Airport> cityAirports = metro.getAirports();
-                    boolean hasCommercialAirport = false;
-                    for (int k = 0; k < cityAirports.size(); k++) {
-                        Airport airport = cityAirports.get(k);
-//                        Log.v("Fetch",String.format("Got airport %s",airport.getCodeIATA()));
-                        if (!airport.hasRoutes()) {
-                            // remove airport
-                            metro.removeAirport(airport);
-                            airports.remove(airport.getCodeIATA());
-                        } else {
-                            hasCommercialAirport = true;
-                        }
-                    }
-                    if (!hasCommercialAirport) {
-//                        Log.d("Fetch",String.format("Removing city: %s",cityKeys.get(i)));
-                        cities.remove(cityKeys.get(i));
-
-                    } else {
-//                        Log.d("Fetch",String.format("%s has a commerical airport",cityKeys.get(i)));
-                        // if not, create
-                        // get lat lng
-                        LatLng pos = null;
-                        Geocoder geo = new Geocoder(context);
-                        try {
-                            double lLLat = metro.getLatitude()-10;
-                            double lLLng = metro.getLongitude()-10;
-                            double uRLat = metro.getLatitude()+10;
-                            double uRLng = metro.getLongitude()+10;
-
-                            if (lLLat < -180) {
-                                lLLat = -180.0;
-                            }
-                            if (lLLng < -180) {
-                                lLLng += 360;
-                            }
-                            if (uRLat > 180) {
-                                uRLat = 180.0;
-                            }
-                            if (uRLng > 180) {
-                                uRLng -= 360;
-                            }
-
-                            List<Address> locations = geo.getFromLocationName(cityKeys.get(i),
-                                    1, lLLat, lLLng, uRLat, uRLng);
-                            Address add = locations.get(0);
-                        } catch(Exception e) {
-                            Log.e("Fetch",e.getMessage());
-                            Log.e("Fetch",String.format("City was %s",metro.getCity()+", ",metro.getCountry()));
-                        }
-                    }
-
-                }
+//                for (int i = 0; i < cityKeys.size(); i++) {
+//                    publishProgress(5.0+(airlineKeys.size()+i)/(double)(airlineKeys.size()+cityKeys.size()));
+//                    Metro metro = cities.get(cityKeys.get(i));
+////                    Log.d("Fetch",String.format("Got metro %s",metro.getCity()+", "+metro.getCountry()));
+//                    ArrayList<Airport> cityAirports = metro.getAirports();
+//                    boolean hasCommercialAirport = false;
+//                    for (int k = 0; k < cityAirports.size(); k++) {
+//                        Airport airport = cityAirports.get(k);
+////                        Log.v("Fetch",String.format("Got airport %s",airport.getCodeIATA()));
+//                        if (!airport.hasRoutes()) {
+//                            // remove airport
+//                            metro.removeAirport(airport);
+//                            airports.remove(airport.getCodeIATA());
+//                        } else {
+//                            hasCommercialAirport = true;
+//                        }
+//                    }
+//                    if (!hasCommercialAirport) {
+////                        Log.d("Fetch",String.format("Removing city: %s",cityKeys.get(i)));
+//                        cities.remove(cityKeys.get(i));
+//
+//                    } else {
+////                        Log.d("Fetch",String.format("%s has a commerical airport",cityKeys.get(i)));
+//                        // if not, create
+//                        // get lat lng
+//                        LatLng pos = null;
+//                        Geocoder geo = new Geocoder(context);
+//                        try {
+//                            double lLLat = metro.getLatitude()-10;
+//                            double lLLng = metro.getLongitude()-10;
+//                            double uRLat = metro.getLatitude()+10;
+//                            double uRLng = metro.getLongitude()+10;
+//
+//                            if (lLLat < -180) {
+//                                lLLat = -180.0;
+//                            }
+//                            if (lLLng < -180) {
+//                                lLLng += 360;
+//                            }
+//                            if (uRLat > 180) {
+//                                uRLat = 180.0;
+//                            }
+//                            if (uRLng > 180) {
+//                                uRLng -= 360;
+//                            }
+//
+//                            List<Address> locations = geo.getFromLocationName(cityKeys.get(i),
+//                                    1, lLLat, lLLng, uRLat, uRLng);
+//                            Address add = locations.get(0);
+//                        } catch(Exception e) {
+//                            Log.e("Fetch",e.getMessage());
+//                            Log.e("Fetch",String.format("City was %s",metro.getCity()+", ",metro.getCountry()));
+//                        }
+//                    }
+//
+//                }
 
                 publishProgress(6.0);
 
@@ -329,6 +330,7 @@ public class Fetch {
 
             } catch (Exception e) {
                 Log.e("Fetch",e.getMessage());
+                e.printStackTrace();
 
             }
             return null;

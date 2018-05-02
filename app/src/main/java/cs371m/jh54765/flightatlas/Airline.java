@@ -51,4 +51,8 @@ public class Airline {
         }
         return false;
     }
+
+    public String toString() {
+        return name;
+    }
 }

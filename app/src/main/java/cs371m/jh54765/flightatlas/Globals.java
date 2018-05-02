@@ -8,9 +8,10 @@ public class Globals{
     private static Globals instance;
 
     // Global variable
-    public boolean HIGHLIGHT_DEST = true;
+    public boolean SHOW_ROUTES = true;
     public boolean ONLY_SHOW_COMMERCIAL_AIRPORTS = true;
-    public boolean DRAW_ALL_ROUTES = true;
+    public boolean SHOW_MARKERS = true;
+
 
     // Restrict the constructor from being instantiated
     private Globals(){}

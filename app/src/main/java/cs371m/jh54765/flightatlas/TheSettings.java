@@ -14,50 +14,63 @@ import android.widget.Switch;
  */
 
 public class TheSettings extends AppCompatActivity {
-    protected boolean highlight_dest;
-    protected boolean draw_all_routes;
-    protected Switch switch_dest;
+    protected boolean show_markers;
+    protected boolean show_routes;
+    protected Switch switch_markers;
     protected Switch switch_routes;
     protected Button button_ok;
     protected Button button_cancel;
+
+    public DBManager db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        db = DBManager.getInstance(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        this.highlight_dest = getIntent().getBooleanExtra("highlight_dest",true);
-        this.draw_all_routes = getIntent().getBooleanExtra("draw_all_routes",true);
+        this.show_markers = getIntent().getBooleanExtra("show_markers",true);
+        this.show_routes = getIntent().getBooleanExtra("show_routes",true);
 
-        this.switch_dest = (Switch) findViewById(R.id.switch_dest);
+        this.switch_markers = (Switch) findViewById(R.id.switch_markers);
         this.switch_routes = (Switch) findViewById(R.id.switch_routes);
 
         this.button_cancel = (Button) findViewById(R.id.button_cancel);
         this.button_ok = (Button) findViewById(R.id.button_ok);
 
-        this.switch_dest.setChecked(this.highlight_dest);
-        this.switch_routes.setChecked(this.draw_all_routes);
+        this.switch_markers.setChecked(this.show_markers);
+        this.switch_routes.setChecked(this.show_routes);
 
     }
 
     protected void okButtonIsPressed(View view) {
-        this.highlight_dest = switch_dest.isChecked();
-        this.draw_all_routes = switch_routes.isChecked();
+        this.show_markers = switch_markers.isChecked();
+        this.show_routes = switch_routes.isChecked();
 
         Intent _result = new Intent();
-        _result.putExtra("highlight_dest",this.highlight_dest);
-        _result.putExtra("draw_all_routes",this.draw_all_routes);
+        _result.putExtra("show_markers",this.show_markers);
+        _result.putExtra("show_routes",this.show_routes);
         setResult(Activity.RESULT_OK,_result);
         finish();
     }
     protected void cancelButtonIsPressed(View view) {
         Intent _result = new Intent();
-        _result.putExtra("highlight_dest",this.highlight_dest);
-        _result.putExtra("draw_all_routes",this.draw_all_routes);
+        _result.putExtra("show_markers",this.show_markers);
+        _result.putExtra("show_routes",this.show_routes);
         setResult(Activity.RESULT_OK,_result);
         finish();
+    }
+
+    public void enableButtonIsPressed(View view) {
+        db.enableAllAirlines();
+    }
+
+    public void disableButtonIsPressed(View view) {
+        db.disableAllAirlines();
+
     }
 }

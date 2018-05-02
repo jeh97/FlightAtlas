@@ -5,14 +5,15 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/text_name"
+        android:id="@+id/text_cityRowName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cityville"
+        android:textColor="#000000"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/text_airports"
+        android:id="@+id/text_cityRowAirports"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="XXX, YYY, ZZZ" />

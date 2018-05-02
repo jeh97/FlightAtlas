@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.content.Context;
 import android.graphics.Color;
@@ -24,9 +25,11 @@ import java.util.ArrayList;
 public class AirportAdapter extends CursorAdapter {
     MainActivity activity;
 
-    TextView text_name;
-    TextView text_code;
-    View container;
+//    TextView text_name;
+//    TextView text_code;
+//    View container;
+//    String name;
+//    String code;
 
     public AirportAdapter(MainActivity act, Cursor c, boolean autoRequery) {
         super(act, c, autoRequery);
@@ -41,21 +44,29 @@ public class AirportAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        text_name = view.findViewById(R.id.text_name);
-        text_code = view.findViewById(R.id.text_code);
-        container = view;
-        String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
-        String code = cursor.getString(cursor.getColumnIndexOrThrow("IATA"));
+        TextView text_name = view.findViewById(R.id.text_airportRowName);
+        TextView text_code = view.findViewById(R.id.text_airportRowCode);
+        TextView text_city = view.findViewById(R.id.text_airportRowCity);
+        View container = view;
+        final String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+        final String code = cursor.getString(cursor.getColumnIndexOrThrow("IATA"));
+        String city = cursor.getString(cursor.getColumnIndexOrThrow("city"));
+        String country = cursor.getString(cursor.getColumnIndexOrThrow("country"));
+
+//        Log.d("AirportAdapter",String.format("name is %s, code is %s",name,code));
         text_name.setText(name);
         text_code.setText(code);
+        text_city.setText(String.format("(%s, %s)",city,country));
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchAirportInfoFragment(text_code.getText().toString());
+//                Log.d("AirportAdapter",String.format("Clicked %s",code));
+                launchAirportInfoFragment(code);
             }
         });
     }
     public void launchAirportInfoFragment(String codeIATA) {
+//        Log.d("AirportAdapter",String.format("launching info for %s",codeIATA));
         FragmentManager fragmentManager = activity.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -74,111 +85,3 @@ public class AirportAdapter extends CursorAdapter {
 
 
 }
-
-//
-//public class AirportAdapter extends RecyclerView.Adapter<AirportAdapter.AirportViewHolder> {
-//    private ArrayList<Airport> mData = new ArrayList<Airport>();
-//    private Context context;
-//
-//    public class AirportViewHolder extends RecyclerView.ViewHolder {
-//        TextView text_name;
-//        TextView text_code;
-//        View container;
-//
-//        public AirportViewHolder(View theView) {
-//            super(theView);
-//            theView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    //open airport info fragment
-//                    System.out.printf("Clicked %s\n",mData.get(getAdapterPosition()).getName());
-//                    launchAirportInfoFragment(mData.get(getAdapterPosition()).getCodeIATA());
-//                }
-//            });
-//            container = theView;
-//            text_name = theView.findViewById(R.id.text_name);
-//            text_code = theView.findViewById(R.id.text_code);
-//
-//        }
-//
-//    }
-//
-//
-//
-//    public AirportAdapter(RecyclerView rv, Context _context) {
-//        // More code
-//        rv.setAdapter(this);
-//
-//
-//
-//        context = _context;
-//    }
-//
-//    // XXX A bunch more functions, like add, removeItem, etc.
-//    // Also important functions like onCreateViewHolder, onBindViewHolder
-//
-//    public void add(Airport airport) {
-//        mData.add(airport);
-//        notifyItemInserted(mData.size()-1);
-//
-//
-//
-//    }
-//
-//    public void removeItem(int position) {
-//        mData.remove(position);
-//        notifyDataSetChanged();
-//    }
-//
-//    public int getItemCount() {
-//        return mData.size();
-//    }
-//
-//    public void onBindViewHolder(AirportAdapter.AirportViewHolder holder, int position) {
-//        try {
-//            holder.text_name.setTextColor(Color.BLACK);
-//            holder.text_name.setText(mData.get(position).getName());
-//            holder.text_code.setTextColor(Color.BLACK);
-//            holder.text_code.setText(mData.get(position).getCodeIATA());
-//
-//
-//        } catch (Exception e) {
-//            System.out.print("onBindViewHolder: ");
-//            System.out.println(e);
-//        }
-//    }
-//
-//    public AirportAdapter.AirportViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        // Create a new view
-//        View v = LayoutInflater.from(context).inflate(R.layout.row_airport_info,parent,false);
-//        AirportViewHolder vh = new AirportViewHolder(v);
-//        return vh;
-//    }
-//
-//
-//    // This one is important and not obvious
-//    @Override
-//    public long getItemId(int position) {
-//        return mData.get(position).hashCode();
-//    }
-//
-//    public void launchAirportInfoFragment(String codeIATA) {
-//        MainActivity mainActivity = (MainActivity) context;
-//        FragmentManager fragmentManager = mainActivity.getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-////        fragmentManager.popBackStack();
-//        Bundle args = new Bundle();
-//        args.putString("airport",codeIATA);
-//
-//        AirportInfoFragment infoFragment = new AirportInfoFragment();
-//        infoFragment.setArguments(args);
-//        fragmentTransaction.remove(fragmentManager.findFragmentById(R.id.main_fragment));
-//        fragmentTransaction.add(R.id.main_fragment,infoFragment);
-//        fragmentTransaction.addToBackStack("airport_info");
-//        fragmentTransaction.commit();
-//
-//    }
-//
-//}
-//
