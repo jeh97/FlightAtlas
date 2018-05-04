@@ -20,16 +20,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-public class MainActivity extends AppCompatActivity implements Fetch.FetchCallback {
+public class MainActivity extends AppCompatActivity implements FetchCityCoords.FetchCityCoordsCallback {
 
     private SupportMapFragment mapFragment;
     private MapHolder mapHolder;
 
-    public TreeMap<String,Metro> cities;
-    public TreeMap<String,Airport> airports;
-    public TreeMap<String,Route> routes;
-    public TreeMap<String,Airline> airlines;
-    public ArrayList<String> routeCodes;
 
     public DBManager db;
 
@@ -41,73 +36,16 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
         Log.v("MainActivity","Fetch started");
     }
 
-    public void fetchComplete(TreeMap<String,Metro> cities,
-                              TreeMap<String,Airport> airports,
-                              TreeMap<String,Route> routes,
-                              TreeMap<String,Airline> airlines,
-                              ArrayList<String> routeCodes) {
-
-        // for each airline, create airline entry
-        ArrayList<String> airlineCodes = new ArrayList<>(airlines.keySet());
-        ArrayList<String> cityCodes = new ArrayList<>(airlines.keySet());
-        ArrayList<String> airportCodes = new ArrayList<>(airlines.keySet());
-        ArrayList<String> routeKeys = new ArrayList<>(routes.keySet());
-
-        for (Map.Entry<String,Airline> entry: airlines.entrySet()) {
-            Airline airline = entry.getValue();
-            if (airline.getRoutes().size() > 0) {
-                try {
-                    db.addAirline(airline);
-                } catch (Exception e) {
-                    Log.e("MainActivity",e.getMessage());
-                }
-            }
-        }
-
-        // for each city, make city entry
-        for (Map.Entry<String,Metro> entry: cities.entrySet()) {
-            Metro city = entry.getValue();
-            boolean hasCommercialAirport = false;
-            for (int k = 0; k < city.getAirports().size(); k++) {
-                hasCommercialAirport = hasCommercialAirport || city.getAirports().get(k).hasRoutes();
-            }
-            if (hasCommercialAirport) {
-                db.addMetro(city);
-            }
-        }
-        // for each airport, make airport entry
-        for (Map.Entry<String,Airport> entry: airports.entrySet()) {
-            Airport airport = entry.getValue();
-            if (airport.hasRoutes()) {
-                try {
-                    db.addAirport(airport);
-                } catch (Exception e) {
-                    Log.e("MainActivity",e.getMessage());
-                }
-            }
-        }
-        // for each route, make route entry
-        for (Map.Entry<String,Route> entry: routes.entrySet()) {
-            db.addRoute(entry.getValue());
-        }
-
-
-        Log.d("MainActivity","Fetch complete");
-        this.cities = cities;
-        this.airports = airports;
-        this.routes = routes;
-        this.airlines = airlines;
-        this.routeCodes = routeCodes;
-        Log.d("MainActivity",String.format("There are %d cities and %d airports\n",this.cities.size(),this.airports.size()));
-
+    public void fetchComplete() {
+        Log.v("MainActivity","Fetch Completed");
         launchListFragment();
     }
     public void fetchFailed() {
         Log.d("MainActivity","Fetch Failed");
     }
 
-    public void updateDatabase() {
-        new Fetch(MainActivity.this,getApplicationContext());
+    public void updateCityCoords() {
+        new FetchCityCoords(MainActivity.this,getApplicationContext());
     }
 
     private void initFlightDB() {
@@ -134,9 +72,10 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
                 .hide(mapFragment)
                 .commit();
 
-//        launchLoadingFragment();
-
         initFlightDB();
+//        launchLoadingFragment();
+//        updateCityCoords();
+
 
         launchListFragment();
 
@@ -219,12 +158,23 @@ public class MainActivity extends AppCompatActivity implements Fetch.FetchCallba
     public void toMapFragmentAirline(String codeIATA) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.add(R.id.main_fragment,mapFragment);
         fragmentTransaction.remove(fragmentManager.findFragmentById(R.id.main_fragment));
         fragmentTransaction.show(mapFragment);
         fragmentTransaction.addToBackStack("mapFragment");
         fragmentTransaction.commit();
         mapHolder.showAirline(codeIATA,true);
+    }
+
+    public void toMapFragmentCity(String city, String country) {
+        Log.d("MainActivity",String.format("Loading mapFragment for city %s, %s",city,country));
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction.remove(fragmentManager.findFragmentById(R.id.main_fragment));
+        fragmentTransaction.show(mapFragment);
+        fragmentTransaction.addToBackStack("mapFragment");
+        fragmentTransaction.commit();
+        mapHolder.showCity(city,country,true);
     }
 
     @Override

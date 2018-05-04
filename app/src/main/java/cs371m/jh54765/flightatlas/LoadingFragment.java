@@ -31,7 +31,7 @@ public class LoadingFragment extends Fragment {
         Log.i("LoadingFragment","Fragment loaded");
 
         Log.d("MainActivity","Fetching");
-        new Fetch((MainActivity)getActivity(),getActivity());
+        new FetchCityCoords((MainActivity)getActivity(),getActivity());
 
     }
 }

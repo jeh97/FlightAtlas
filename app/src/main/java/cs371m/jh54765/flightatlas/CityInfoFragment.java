@@ -31,7 +31,7 @@ public class CityInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the root view and cache references to vital UI elements
-        View v = inflater.inflate(R.layout.airportinfo_fragment, container, false);
+        View v = inflater.inflate(R.layout.cityinfo_fragment, container, false);
         mainActivity = (MainActivity) getActivity();
         Bundle args = getArguments();
         this.city = args.getString("city");
@@ -55,7 +55,6 @@ public class CityInfoFragment extends Fragment {
         this.coords = new LatLng(latitude,longitude);
         String city = cursor.getString(cursor.getColumnIndexOrThrow("city"));
         String country = cursor.getString(cursor.getColumnIndexOrThrow("country"));
-        this.city = String.format("%s, %s",city,country);
 
         this.text_city.setText(city);
         this.text_coords.setText(String.format("%f, %f",latitude,longitude));
@@ -70,7 +69,7 @@ public class CityInfoFragment extends Fragment {
     }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        this.listView = getView().findViewById(R.id.listView_routes);
+        this.listView = getView().findViewById(R.id.listView_airports);
 
         this.text_city = getView().findViewById(R.id.textView_cityCity);
         this.text_country = getView().findViewById(R.id.textView_cityCountry);
@@ -81,8 +80,8 @@ public class CityInfoFragment extends Fragment {
         this.text_coords.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("UI Click","Clicked coords");
-//                mainActivity.toMapFragment(code);
+                Log.d("UI Click",String.format("Clicked city %s, %s",city,country));
+                mainActivity.toMapFragmentCity(city,country);
             }
         });
 
@@ -93,10 +92,10 @@ public class CityInfoFragment extends Fragment {
     }
 
     private void loadAirports() {
-        Cursor cursor = mainActivity.db.getCityAirports(city,country);
+        Cursor cursor = mainActivity.db.getCityAirportsAndDestCount(city,country);
 
-//        AirportRouteAdapter adapter = new AirportRouteAdapter(mainActivity,cursor,false);
-//        this.listView.setAdapter(adapter);
+        CityAirportAdapter adapter = new CityAirportAdapter(mainActivity,cursor,false);
+        this.listView.setAdapter(adapter);
 
     }
 

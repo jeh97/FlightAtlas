@@ -266,6 +266,24 @@ public class DBManager {
         return flightDb.query(table, columns, queryString, argsArr, groupBy, null, orderBy, null);
     }
 
+    public Cursor getCitiesAndAirport(String order, boolean asc) {
+        String table = "metros JOIN (SELECT * FROM airports GROUP BY city,country) as airport ON metros.city = airport.city AND metros.country = airport.country";
+
+        String[] columns = {"metros.city AS city", "metros.country AS country", "metros.latitude AS cityLat","metros.longitude AS cityLng",
+        "airport.latitude AS airLat", "airport.longitude AS airLng","airport.name","airport.IATA"};
+//        List<String> where = new ArrayList<>();
+        String queryString = null;
+        List<String> args = new ArrayList<>();
+
+        String ascDesc = (asc) ? "ASC":"DESC";
+
+        String orderBy = String.format("%s %s",order,ascDesc);
+        String groupBy = null;
+
+        String[] argsArr = args.toArray(new String[args.size()]);
+        return flightDb.query(table, columns, queryString, argsArr, groupBy, null, orderBy, null);
+    }
+
     public Cursor getCityAirports(String city, String country) {
         String table = "metros JOIN airports ON metros.city = airports.city AND metros.country = airports.country";
         String[] columns = {"metros._id","airports._id","metros.city", "metros.country","IATA","name"};
@@ -283,6 +301,30 @@ public class DBManager {
         String[] argsArr = args.toArray(new String[args.size()]);
         return flightDb.query(table, columns, queryString, argsArr, groupBy, null, orderBy, null);
     }
+    public Cursor getCityAirportsAndDestCount(String city, String country) {
+        String table = "airports JOIN "+
+                    "(SELECT routes.origin AS origin, COUNT(DISTINCT routes.destination) AS dests FROM routes GROUP BY (origin))"+
+                    "ON origin=airports.IATA";
+        String[] columns = {"airports._id AS _id","airports.name AS name","airports.IATA as IATA","dests AS destinations",
+                            "airports.city AS city","airports.country AS country"};
+//        List<String> where = new ArrayList<>();
+        List<String> args = new ArrayList<>();
+
+        String queryString = "(city = ?) AND (country = ?)";
+
+        args.add(city);
+        args.add(country);
+
+        String orderBy = null;
+        String groupBy = null;
+
+        String[] argsArr = args.toArray(new String[args.size()]);
+        Cursor cursor =  flightDb.query(table, columns, queryString, argsArr, groupBy, null, orderBy, null);
+        Log.d("DBManager",String.format("There are %d rows",cursor.getCount()));
+        return cursor;
+    }
+
+
 
     public void setAirlineEnabled(String IATA, boolean enabled) {
         String table = "airlines";
@@ -327,6 +369,7 @@ public class DBManager {
     }
 
     public Cursor getCityInfo(String city, String country) {
+        Log.d("DBManager",String.format("getCityInfo for %s, %s",city,country));
         String table = "metros";
         String[] columns = {"_id","city", "country","latitude","longitude"};
 //        List<String> where = new ArrayList<>();
@@ -355,10 +398,58 @@ public class DBManager {
         List<String> whereArgs = new ArrayList<>();
         whereArgs.add(city);
         whereArgs.add(country);
-        String[] whereArgsArr = null;
+        String[] whereArgsArr = whereArgs.toArray(new String[args.size()]);;
+
+        Log.d("updateCityLatLng",String.format("%s, %s new LatLng % 08f,%+08f",city,country,newLatLng.latitude,newLatLng.longitude));
 
         flightDb.update(table,args,queryString,whereArgsArr);
     }
 
+
+    public Cursor getCityRoutes(String city, String country) {
+        String table = "routes r\n" +
+                "JOIN airports origAirport ON origAirport.IATA = r.origin \n" +
+                "JOIN airports destAirport ON destAirport.IATA = r.destination \n" +
+                "JOIN metros origCity ON origAirport.city = origCity.city AND origAirport.country = origCity.country \n" +
+                "JOIN metros destCity ON destAirport.city = destCity.city AND destAirport.country = destCity.country \n";
+        String[] columns = {"r._id","r.origin","r.destination",
+                "destCity.city AS destCityCity","destCity.country AS destCityCountry","destCity.latitude AS destCityLat","destCity.longitude AS destCityLng",
+                "origCity.city AS origCityCity","origCity.country AS origCityCountry","origCity.latitude AS origCityLat","origCity.longitude AS origCityLng"};
+        List<String> args = new ArrayList<>();
+
+        String queryString = "(origCity.city = ?) AND (origCity.country = ?)";
+        args.add(city);
+        args.add(country);
+
+//        String orderBy = "routes.destination ASC";
+
+        String groupBy = "origCity.city, origCity.country, destCity.city, destCity.country";
+        String orderBy = null;
+
+        String[] argsArr = args.toArray(new String[args.size()]);
+        return flightDb.query(table,columns,queryString,argsArr,groupBy,null,orderBy,null);
+    }
+
+    public void renameCity(String city, String country, String newCity) {
+        String table = "metros";
+        ContentValues args = new ContentValues();
+        args.put("city",newCity);
+
+        String queryString = "(city = ?) AND (country = ?)";
+
+        List<String> whereArgs = new ArrayList<>();
+        whereArgs.add(city);
+        whereArgs.add(country);
+        String[] whereArgsArr = whereArgs.toArray(new String[args.size()]);;
+
+        flightDb.update(table,args,queryString,whereArgsArr);
+
+//        table = "airports";
+
+
+//        flightDb.update(table,args,queryString,whereArgsArr);
+
+
+    }
 
 }

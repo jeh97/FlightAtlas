@@ -3,6 +3,9 @@ package cs371m.jh54765.flightatlas;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,8 +40,8 @@ public class CityAdapter extends CursorAdapter {
         TextView text_airports = view.findViewById(R.id.text_cityRowAirports);
         View container = view;
 
-        String city = cursor.getString(cursor.getColumnIndexOrThrow("city"));
-        String country = cursor.getString(cursor.getColumnIndexOrThrow("country"));
+        final String city = cursor.getString(cursor.getColumnIndexOrThrow("city"));
+        final String country = cursor.getString(cursor.getColumnIndexOrThrow("country"));
         Cursor cur = activity.db.getCityAirports(city,country);
 //        cur.moveToFirst();
         String airports = "";
@@ -55,7 +58,27 @@ public class CityAdapter extends CursorAdapter {
             @Override
             public void onClick(View view) {
                 Log.d("CityAdapter","Clicked city");
+                launchCityInfoFragment(city,country);
             }
         });
+    }
+    public void launchCityInfoFragment(String city,String country) {
+//        Log.d("AirportAdapter",String.format("launching info for %s",codeIATA));
+        FragmentManager fragmentManager = activity.getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+//        fragmentManager.popBackStack();
+        Bundle args = new Bundle();
+        args.putString("city",city);
+        args.putString("country",country);
+
+
+        CityInfoFragment infoFragment = new CityInfoFragment();
+        infoFragment.setArguments(args);
+        fragmentTransaction.remove(fragmentManager.findFragmentById(R.id.main_fragment));
+        fragmentTransaction.add(R.id.main_fragment,infoFragment);
+        fragmentTransaction.addToBackStack("city_info");
+        fragmentTransaction.commit();
+
     }
 }

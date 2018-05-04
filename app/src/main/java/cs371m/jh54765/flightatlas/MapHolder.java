@@ -335,32 +335,14 @@ public class MapHolder implements OnMapReadyCallback {
                 }
             });
             gMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                int lastIndex = -1;
                 @Override
                 public boolean onMarkerClick(Marker marker) {
-                    if (lastIndex>0) {
-                        marker.hideInfoWindow();
-                        return false;
-                    }
                     marker.showInfoWindow();
-                    lastIndex*=-1;
                     return false;
                 }
             });
         }
-//        if (infoButton == null) {
-//            infoButton = new ImageView(context);
-//            infoButton.setImageResource(android.R.drawable.ic_menu_info_details);
-//        }
-//        infoButton.setTooltipText(IATA);
-//        infoButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.d("MapHolder",originIATA);
-//            }
-//        });
-//        Fragment frag = (Fragment) context.findViewById(R.id.main_fragment);
-//        frag.addView
+
 
 
     }
@@ -405,16 +387,14 @@ public class MapHolder implements OnMapReadyCallback {
                     Marker marker = gMap.addMarker(new MarkerOptions()
                             .position(origLatLng)
                             .title(origIATA)
-                            .snippet(String.format("%s\n%s, %s", origName, origCity, origCountry))
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                            .snippet(String.format("%s\n%s, %s", origName, origCity, origCountry)));
                     markers.put(origIATA,marker);
                 }
                 if (!markers.containsKey(destIATA)) {
                     Marker marker = gMap.addMarker(new MarkerOptions()
                             .position(destLatLng)
                             .title(destIATA)
-                            .snippet(String.format("%s\n%s, %s", destName, destCity, destCountry))
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                            .snippet(String.format("%s\n%s, %s", destName, destCity, destCountry)));
                     markers.put(destIATA,marker);
                 }
             }
@@ -431,5 +411,68 @@ public class MapHolder implements OnMapReadyCallback {
                 return false;
             }
         });
+    }
+
+    public void showCity(String city, String country, boolean moveCamera) {
+        if (warnIfNotReady()) {
+            return;
+        }
+
+        gMap.clear();
+        Cursor cityCursor = context.db.getCityInfo(city,country);
+        cityCursor.moveToFirst();
+        double lat = cityCursor.getDouble(cityCursor.getColumnIndexOrThrow("latitude"));
+        double lng = cityCursor.getDouble(cityCursor.getColumnIndexOrThrow("longitude"));
+        LatLng pos = new LatLng(lat,lng);
+        String name = String.format("%s, %s",city,country);
+        // Move camera if entering map from listviews
+        if (moveCamera) gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos,defaultZoom));
+        // Origin Marker
+        if (globals.SHOW_MARKERS) {
+            Marker originMarker = gMap.addMarker(new MarkerOptions()
+                    .position(pos)
+                    .title(name)
+//                    .snippet(String.format("%s\n%s, %s", name, city, country))
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+            originMarker.showInfoWindow();
+        }
+
+        Cursor cursor = context.db.getCityRoutes(city,country);
+        while (cursor.moveToNext()) {
+            String destCity = cursor.getString(cursor.getColumnIndexOrThrow("destCityCity"));
+            String destCountry = cursor.getString(cursor.getColumnIndexOrThrow("destCityCountry"));
+            Double destLat = cursor.getDouble(cursor.getColumnIndexOrThrow("destCityLat"));
+            Double destLng = cursor.getDouble(cursor.getColumnIndexOrThrow("destCityLng"));
+            LatLng pos2 = new LatLng(destLat,destLng);
+            name = String.format("%s, %s",destCity,destCountry);
+            if (globals.SHOW_ROUTES) DrawLine(pos,pos2);
+//            DrawDestDot(pos2);
+            if (globals.SHOW_MARKERS) {
+                Marker marker = gMap.addMarker(new MarkerOptions()
+                        .position(pos2)
+                        .title(name));
+            }
+
+
+            gMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                @Override
+                public void onInfoWindowClick(Marker marker) {
+                    String title = marker.getTitle();
+                    int split = title.lastIndexOf(",");
+                    String city = title.substring(0,split);
+                    String country = title.substring(split+2);
+                    showCity(city,country,false);
+                }
+            });
+            gMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                @Override
+                public boolean onMarkerClick(Marker marker) {
+                    marker.showInfoWindow();
+                    return false;
+                }
+            });
+        }
+
+
     }
 }
